@@ -1,0 +1,89 @@
+﻿<Window x:Class="CRM.PrihodWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRM"
+        mc:Ignorable="d"
+        Title="Приход" Height="610.558" Width="800" Background="#FFBECFDF">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Номер приход. ордера" HorizontalAlignment="Left" Margin="50,30,0,10" VerticalAlignment="Top" IsEnabled="False" />
+        <TextBox x:Name="txtbNumPrihOrder" Grid.Row="0" Grid.Column="1" Margin="0,30,0,10"  HorizontalAlignment="Left" Height="23" 
+                 IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Дата прихода" HorizontalAlignment="Left" Margin="50,0,0,10" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpDatePrih" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Width="239"/>
+        <Label Grid.Row="2" Grid.Column="0"  Content="Поставщик" HorizontalAlignment="Left" Margin="50,0,0,10" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbPostavshik" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Width="239"/>
+        <DataGrid x:Name="dgPrihod" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="50,0,0,0"
+                  Width="700" Height="350" AutoGenerateColumns="False">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="80" />
+                    <Setter Property="Padding" Value="1" />
+                    <Setter Property="Background" Value="#FFC7D5E3" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush"  Value="Black" />
+                    <Setter Property="BorderThickness"  Value="0.3" />
+                    <Setter Property="Height"  Value="20" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Header="Ид. материала" MinWidth="110" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=id_material, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridComboBoxColumn Header="Название материала" x:Name="cmbMaterial" MinWidth="90"
+                    SelectedValueBinding="{Binding Path=id_material, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedValuePath="id_material"
+                    DisplayMemberPath="name_material" >
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Header="Кол-во" MinWidth="70" Binding="{Binding Path=kol, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                            <Setter Property="Padding" Value="0,0,5,0"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Цена" MinWidth="70" Binding="{Binding Path=cena, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                            <Setter Property="Padding" Value="0,0,5,0"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnSave" Grid.Row="4" Grid.Column="2" Content="Сохранить" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="95" Height="27" Click="btnSave_Click" />
+        <Button x:Name="btnPrint" Grid.Row="4" Grid.Column="3" Content="Печать" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="95" Height="27" Click="btnPrint_Click"/>
+
+    </Grid>
+</Window>

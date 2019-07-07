@@ -1,0 +1,40 @@
+﻿<Window x:Class="CRM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Заявки" Height="600" Width="920" Background="#FFBECFDF" Closed="Window_Closed">
+    <Grid>
+        <ListView x:Name="lstvClient" HorizontalAlignment="Left" Height="440" Margin="10,26,0,0" VerticalAlignment="Top" 
+                  Width="550" SelectionChanged="lstvClient_SelectionChanged" MouseDoubleClick="lstvClient_MouseDoubleClick" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№ заявки"
+				    DisplayMemberBinding="{Binding IdItem}"
+				    Width="70"/>
+                    <GridViewColumn Header="ФИО клиента"
+				    DisplayMemberBinding="{Binding Client}"
+				    Width="430"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Width="180" Height="30" Margin="450,353,0,187.4">Поиск по фрагменту фамилии</Label>
+        <TextBox x:Name="txtBNameClient" VerticalAlignment="Center" Height="30" Margin="778,352,31,187" TextChanged="txtBNameClient_TextChanged"/>
+        <Button x:Name="btnNewClient" Height="35" Width="150" Click="btnNewClient_Click" Margin="52,480,691.6,10">Новый клиент</Button>
+        <Border x:Name="bCorrect" BorderBrush="#FF7788AE" BorderThickness="1" 
+                         Margin="272,500,371.6,30">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RadioButton x:Name="rbtnUpd" Content="Корректировка"  
+                                     VerticalAlignment="Center" Margin="12,6,5.6,8" Checked="rbtnUpd_Checked"/>
+                <RadioButton x:Name="rbtnProsm" Content="Просмотр" Grid.Column="1" HorizontalAlignment="Left" 
+                                      VerticalAlignment="Center" Margin="12,6,0,8" IsChecked="True" Checked="rbtnProsm_Checked"/>
+            </Grid>
+        </Border>
+        <Button x:Name="FiltCancel" Width="240" Height="35" Margin="630,360,20,40" Click="FiltCancel_Click">Отменить фильтрацию</Button>
+        <Button x:Name="btnUstNaOprDen" Width="240" Height="35" Margin="630,55,20,460" Content="Установки на определённый день" Click="btnUstNaOprDen_Click" />
+        <Button x:Name="btnOtkazy" Width="240" Height="35" Margin="630,123,20,360" Content="Клиенты, отказавшиеся от установки" Click="btnOtkazy_Click" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,105 @@
+﻿<Window x:Class="CRM.InventarizacionnajaVedomost"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:CRM"
+        mc:Ignorable="d"
+        Title="Инвентаризационная ведомость" Height="800" Width="1250" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF9EC2E4">
+        <Label Content="Дата предыдущей инвентаризации" HorizontalAlignment="Left" Margin="68,15,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBPrevInvent" HorizontalAlignment="Left" IsEnabled="False" Height="23" Width="100" Margin="276,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label Content="Материальные остатки на" HorizontalAlignment="Left" Margin="419,15,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtCurInvent" HorizontalAlignment="Left" Margin="578,17,0,0" Height="23" Width="100" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
+        <Button x:Name="btnRun" Content="Обновить" HorizontalAlignment="Left" Margin="749,17,0,0" VerticalAlignment="Top" Width="100" Click="btnRun_Click" Height="23"/>
+        <DataGrid x:Name="dgInventVedomost" Margin="10,57,3.6,68.4" AutoGenerateColumns="False" Width="1200">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="80" />
+                    <Setter Property="Padding" Value="1" />
+                    <Setter Property="Background" Value="#FFC9C9C9" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="0.3" />
+                    <Setter Property="Height" Value="20" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Header="Код материала" Width="110" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=id_material, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Артикул" Width="90" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=artikul, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn  Header="Название материала" Width="350" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=NameMaterial, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Ед. изм." Width="80" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=nameEI, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Остаток в пред. инвент." Width="120" Binding="{Binding Path=ostatok_cur, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                            <Setter Property="Padding" Value="0,0,5,0"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Приход" Width="120" Binding="{Binding Path=prih, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                            <Setter Property="Padding" Value="0,0,5,0"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Расход" Width="120" Binding="{Binding Path=rash, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                            <Setter Property="Padding" Value="0,0,5,0"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Остаток (расчетн.)" Width="120" Binding="{Binding Path=ostatok_new, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                            <Setter Property="Padding" Value="0,0,5,0"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="IntVedomost" Content="Инвенаризационная ведомость" HorizontalAlignment="Left" Margin="506,720,0,0" VerticalAlignment="Top" Width="195" Click="IntVedomost_Click" Height="23"/>
+
+    </Grid>
+</Window>

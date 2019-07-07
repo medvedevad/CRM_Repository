@@ -1,0 +1,142 @@
+﻿<Window x:Class="CRM.ClientAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Новый клиент" Height="388.793" Width="1162.379" WindowStartupLocation="CenterScreen" SizeToContent="Width" Background="#FFBECFDF">
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,10,0.4,15.2" Grid.RowSpan="3">Фамилия</Label>
+        <Label Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Имя</Label>
+        <Label Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Отчество</Label>
+        <Label Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">№ паспорта</Label>
+        <Label Grid.Row="4" HorizontalAlignment="Stretch">Телефон</Label>
+
+        <TextBox x:Name="txtbFamilCl" Grid.Column="1" Margin="0,20,0,0" Width="100" Height="20" Grid.ColumnSpan="2"
+                             HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBox>
+        <TextBox x:Name="txtbNameCl" Grid.Column="1" Grid.Row="1"  Width="100" Height="20" 
+                             Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBox>
+        <TextBox x:Name="txtbSurnameCl" Grid.Column="1" Grid.Row="2"  Width="100" Height="20" 
+                             Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBox>
+        <TextBox x:Name="txtbPasp" Grid.Column="1" Grid.Row="3"  Width="100" Height="20" 
+                             Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBox>
+        <TextBox x:Name="txtbTel" Grid.Row="4" Grid.Column="1" Height="20" Width="100" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+
+
+        <RadioButton GroupName="TownCity" x:Name="rbtnMoscow" Content="Москва" Grid.Column="3" HorizontalAlignment="Left" 
+                     VerticalAlignment="Bottom" Checked="rbtnMoscow_Checked" Grid.ColumnSpan="2" Margin="62,0,0,12"/>
+        <RadioButton GroupName="TownCity" x:Name="rbtnMO" Content="Москв. обл." Grid.Column="5" HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" Checked="rbtnMO_Checked"/>
+        <Label Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right">Город</Label>
+        <Label Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right">Улица</Label>
+        <Label Grid.Row="3" Grid.Column="3" HorizontalAlignment="Right">Дом</Label>
+        <Label Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right">Корпус</Label>
+        <Label Grid.Row="5" Grid.Column="3" HorizontalAlignment="Right">Квартира</Label>
+        <Label Grid.Row="6" Grid.Column="3" HorizontalAlignment="Right">Подъезд</Label>
+        <Label Grid.Row="7" Grid.Column="3" HorizontalAlignment="Right">Этаж</Label>
+        <Label Grid.Row="8" Grid.Column="3" HorizontalAlignment="Right">Домофон</Label>
+        <Label Grid.Row="9" Grid.Column="3" HorizontalAlignment="Right">Метро</Label>
+        <Label Grid.Row="10" Grid.Column="3" HorizontalAlignment="Right">Район</Label>
+        <TextBox x:Name="txtbCityTown" Grid.Row="1" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbStreet" Grid.Row="2" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbHouse" Grid.Row="3" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbKorp" Grid.Row="4" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbFlat" Grid.Row="5" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbPodezd" Grid.Row="6" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbEtag" Grid.Row="7" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbDomofon" Grid.Row="8" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+        <ComboBox x:Name="cmbMetro" Grid.Row="9" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"  ></ComboBox>
+        <TextBox x:Name="txtbRajon" Grid.Row="10" Grid.Column="4" Height="20" Width="200" HorizontalAlignment="Left"
+                             Grid.ColumnSpan="2"></TextBox>
+
+        <Label Grid.Row="0" HorizontalAlignment="Right" Grid.Column="6">Кол. сч. хол. воды</Label>
+        <Label Grid.Row="1" HorizontalAlignment="Right" Grid.Column="6">Марка сч. хол. воды</Label>
+        <Label Grid.Row="2" HorizontalAlignment="Right" Grid.Column="6">Кол. сч. гор. воды</Label>
+        <Label Grid.Row="3" HorizontalAlignment="Right" Grid.Column="6">Марка сч. гор. воды</Label>
+        <Label Grid.Row="4" HorizontalAlignment="Right" Grid.Column="6">Сум. кол. сч. воды</Label>
+        <Label Grid.Row="5" HorizontalAlignment="Right" Grid.Column="6">Кол-во теплосчётчиков</Label>
+        <Label Grid.Row="6" HorizontalAlignment="Right" Grid.Column="6">Марка теплосч.</Label>
+        <TextBox x:Name="txtbKolHol" Grid.Row="0" Grid.Column="7" Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+        <ComboBox x:Name="cmbMarkaHol" Grid.Row="1" Grid.Column="7"  Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2"></ComboBox>
+        <TextBox x:Name="txtbKolGor" Grid.Row="2" Grid.Column="7" Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+        <ComboBox x:Name="cmbMarkaGor" Grid.Row="3" Grid.Column="7"  Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2"></ComboBox>
+        <TextBox x:Name="txtbKolSch" Grid.Row="4" Grid.Column="7" Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+        <TextBox x:Name="txtbKolTeplo" Grid.Row="5" Grid.Column="7" Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+        <ComboBox x:Name="cmbMarkaTeplo" Grid.Row="6" Grid.Column="7"  Height="20" Width="100" HorizontalAlignment="Left" Grid.ColumnSpan="2"></ComboBox>
+
+        <Label Grid.Row="5" Grid.Column="12"  HorizontalAlignment="Right" VerticalAlignment="Center" Content="Желаемая дата прибытия" Margin="0,0,0,0"/>
+
+        <Label Grid.Row="6" Grid.Column="12"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,0,0">Монтажник</Label>
+        <Label Grid.Row="7" Grid.Column="12" HorizontalAlignment="Right" Margin="0,0,0,0" >Сумма</Label>
+        <TextBox x:Name="txtbVyezd" Grid.Row="5" Grid.Column="13" Width="200" Height="20"
+                             HorizontalAlignment="Left" Margin="0,0,0,0" />
+        <ComboBox x:Name="cmbMont" Grid.Row="6" Grid.Column="13" Width="200" Height="20"
+                              HorizontalAlignment="Left" Margin="0,0,0,0"></ComboBox>
+        <TextBox x:Name="txtbSum" Grid.Row="7" Grid.Column="13" Height="20" Width="200" HorizontalAlignment="Left" Margin="0,0,0,0" />
+
+        <Label Grid.Column="12" HorizontalAlignment="Right">№ заявки</Label>
+        <Label Grid.Column="12" Grid.Row="1" HorizontalAlignment="Right">Дата и время регистрации</Label>
+        <Label Grid.Column="12" Grid.Row="2" HorizontalAlignment="Right">Диспетчер</Label>
+        <Label Grid.Column="12" Grid.Row="3" HorizontalAlignment="Right">Вид работ</Label>
+        <Label Grid.Column="12" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center">Статус заявки</Label>
+        <TextBox x:Name="txtbNumberRequest" Grid.Row="0" Grid.Column="13" Height="20" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="txtbDateReg" Grid.Row="1" Grid.Column="13" Height="20" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FFF7F4C1"></TextBox>
+        <TextBox x:Name="txtbDispR" Grid.Row="2" Grid.Column="13" Height="20" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+        <ComboBox x:Name="cmbKindOfWork" Grid.Row="3" Grid.Column="13"  Height="20" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtbStatus" Grid.Row="4" Grid.Column="13" Height="20" Width="200" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text="принято"></TextBox>
+
+        <Button x:Name="btnOKFizL" Margin="10,10,2,0" Grid.Row="11" Grid.Column="10" MinHeight="20" MaxHeight="30" 
+                            MinWidth="75" MaxWidth="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnOKFizL_Click">OK</Button>
+        <Button x:Name="btnCancelFizL" Margin="2,10,10,0" Grid.Row="11" Grid.Column="12" MinHeight="20" MaxHeight="30" 
+                            MinWidth="75" MaxWidth="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnCancelFizL_Click">Отмена</Button>
+        <Button x:Name="btnPrintReq" Content="Печать заявки" Grid.Column="13" Grid.Row="11" HorizontalAlignment="Left" Margin="50,10,10,0" VerticalAlignment="Top" Width="90" Click="btnPrintReq_Click"/>
+        <Label Content="." Grid.Column="14" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="12" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

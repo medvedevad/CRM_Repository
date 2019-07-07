@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7c784c03fbc4c02824e9fe9f43b2add" Name="Diagram1" ZoomLevel="46">
+        <EntityTypeShape EntityType="CRM_magModel.BSO" Width="1.5" PointX="19.625" PointY="10.75" />
+        <EntityTypeShape EntityType="CRM_magModel.Ed_izm" Width="1.5" PointX="10.625" PointY="15.375" />
+        <EntityTypeShape EntityType="CRM_magModel.Postavshiki" Width="1.5" PointX="8.375" PointY="4.625" />
+        <EntityTypeShape EntityType="CRM_magModel.Request_buhg" Width="1.5" PointX="17.5" PointY="8.125" />
+        <EntityTypeShape EntityType="CRM_magModel.Sotrudniki" Width="1.5" PointX="5.375" PointY="7.25" />
+        <EntityTypeShape EntityType="CRM_magModel.sysdiagrams" Width="1.5" PointX="21.75" PointY="12.5" />
+        <EntityTypeShape EntityType="CRM_magModel.Vozvrat_mater1" Width="1.5" PointX="8" PointY="10.5" />
+        <EntityTypeShape EntityType="CRM_magModel.Vozvrat_mater2" Width="1.5" PointX="10.625" PointY="10.25" />
+        <EntityTypeShape EntityType="CRM_magModel.Vydacha_mater1" Width="1.875" PointX="8" PointY="7.625" />
+        <EntityTypeShape EntityType="CRM_magModel.Vydacha_mater2" Width="1.875" PointX="10.625" PointY="7.875" />
+        <AssociationConnector Association="CRM_magModel.FK_Vozvrat_mater2_Vozvrat_mater1" />
+        <AssociationConnector Association="CRM_magModel.FK_Vydacha_mater2_Vydacha_mater1" />
+        <EntityTypeShape EntityType="CRM_magModel.Kind_of_work" Width="1.5" PointX="12.875" PointY="3.125" />
+        <EntityTypeShape EntityType="CRM_magModel.Status" Width="1.5" PointX="15.25" PointY="6.25" />
+        <EntityTypeShape EntityType="CRM_magModel.G_Schetchik" Width="1.5" PointX="17.5" PointY="13" />
+        <EntityTypeShape EntityType="CRM_magModel.H_Schetchik" Width="1.5" PointX="15.25" PointY="17.125" />
+        <EntityTypeShape EntityType="CRM_magModel.Teplo_Schetchik" Width="1.5" PointX="17" PointY="15.125" />
+        <EntityTypeShape EntityType="CRM_magModel.Request_snab" Width="1.5" PointX="14.875" PointY="13.25" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_snab_G_Schetchik" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_snab_H_Schetchik" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_snab_Teplo_Schetchik" />
+        <AssociationConnector Association="CRM_magModel.FK_Vydacha_mater1_Request_snab" />
+        <EntityTypeShape EntityType="CRM_magModel.Montazhniki" Width="1.5" PointX="5.625" PointY="9.875" />
+        <AssociationConnector Association="CRM_magModel.FK_Vozvrat_mater1_Montazhniki" />
+        <AssociationConnector Association="CRM_magModel.FK_Vydacha_mater1_Montazhniki" />
+        <EntityTypeShape EntityType="CRM_magModel.Perenos_request" Width="1.5" PointX="20" PointY="7.25" />
+        <EntityTypeShape EntityType="CRM_magModel.Client" Width="1.5" PointX="19.375" PointY="3.5" />
+        <EntityTypeShape EntityType="CRM_magModel.Adr_installation" Width="1.5" PointX="17.25" PointY="3.625" />
+        <EntityTypeShape EntityType="CRM_magModel.Metro" Width="1.5" PointX="15.5" PointY="3.75" />
+        <AssociationConnector Association="CRM_magModel.FK_Adr_installation_Client" />
+        <AssociationConnector Association="CRM_magModel.FK_Adr_installation_Metro" />
+        <EntityTypeShape EntityType="CRM_magModel.tEdIzm" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CRM_magModel.FullRequest" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CRM_magModel.RequestList" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CRM_magModel.dbo_Metro" Width="1.5" PointX="5.625" PointY="4.5" />
+        <EntityTypeShape EntityType="CRM_magModel.vMaterialy" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CRM_magModel.Prihod1" Width="1.5" PointX="12.875" PointY="23.25" />
+        <EntityTypeShape EntityType="CRM_magModel.Prihod2" Width="1.5" PointX="15.125" PointY="20" />
+        <AssociationConnector Association="CRM_magModel.FK_Prihod1_Postavshiki" />
+        <AssociationConnector Association="CRM_magModel.FK_Prihod2_Prihod11" />
+        <EntityTypeShape EntityType="CRM_magModel.Rashod1" Width="1.5" PointX="7.875" PointY="13.25" />
+        <AssociationConnector Association="CRM_magModel.FK_Rashod_nar_zak1_Montazhniki" />
+        <EntityTypeShape EntityType="CRM_magModel.Materialy" Width="1.5" PointX="12.875" PointY="18" />
+        <AssociationConnector Association="CRM_magModel.FK_Materialy_Ed_izm" />
+        <AssociationConnector Association="CRM_magModel.FK_Prihod2_Materialy" />
+        <AssociationConnector Association="CRM_magModel.FK_Vozvrat_mater2_Materialy" />
+        <AssociationConnector Association="CRM_magModel.FK_Vydacha_mater2_Materialy" />
+        <EntityTypeShape EntityType="CRM_magModel.tmp_OborotkaSklad" Width="1.5" PointX="13.375" PointY="8.75" />
+        <EntityTypeShape EntityType="CRM_magModel.Params" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CRM_magModel.Request_reception" Width="1.5" PointX="22.25" PointY="6.625" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Adr_installation" />
+        <AssociationConnector Association="CRM_magModel.FK_BSO_Request_reception" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Kind_of_work" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Perenos_request" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Request_buhg" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Request_snab" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Status" />
+        <EntityTypeShape EntityType="CRM_magModel.Request_attachment" Width="1.5" PointX="7.875" PointY="17" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_attachment_Montazhniki" />
+        <AssociationConnector Association="CRM_magModel.FK_Request_reception_Request_attachment" />
+        <EntityTypeShape EntityType="CRM_magModel.Rashod_2" Width="1.5" PointX="18.125" PointY="17.625" />
+        <AssociationConnector Association="CRM_magModel.FK_Rashod_2_Materialy" />
+        <AssociationConnector Association="CRM_magModel.FK_Rashod_2_Rashod1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

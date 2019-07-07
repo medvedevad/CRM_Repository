@@ -1,0 +1,79 @@
+﻿<Window x:Class="CRM.UstanovkaNaSledDen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRM"
+        mc:Ignorable="d"
+        Title="Планирование установок" Height="450" Width="800" Background="#FFBECFDF">
+    <Grid>
+        <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Left" Margin="543,373,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSave_Click"/>
+        <Button x:Name="btnCancel" Content="Отмена" HorizontalAlignment="Left" Margin="636,373,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnCancel_Click"/>
+        <DataGrid x:Name="dgUstanovka" Margin="12,55,13.6,63" AutoGenerateColumns="False" >
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="80" />
+                    <Setter Property="Padding" Value="1" />
+                    <Setter Property="Background" Value="#FFC7D5E3" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush"  Value="Black" />
+                    <Setter Property="BorderThickness"  Value="0.3" />
+                    <Setter Property="Height"  Value="20" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Header="ФИО заказчика" x:Name="FIOzakazchika" MinWidth="110" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=FIO_zakazchika, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Адрес" x:Name="Adres" MinWidth="300" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Adres, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="№ заявки" x:Name="numberRequest" MinWidth="70" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=NumberRequest, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Дата исполнения" x:Name="DateExecution" MinWidth="70" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=DateExecution, Mode=TwoWay, StringFormat=dd/MM/yyyy}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridComboBoxColumn Header="Монтажник" x:Name="cmbMont" MinWidth="90"
+                    SelectedValueBinding="{Binding Path=IdMont, UpdateSourceTrigger=PropertyChanged}" 
+
+                      SelectedValuePath="id_mont"
+                    DisplayMemberPath="full_name" >
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Даты установок с" HorizontalAlignment="Left" Margin="31,13,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpDateUstFrom" HorizontalAlignment="Left" Margin="140,14,0,0" VerticalAlignment="Top"/>
+        <Label Content="по" HorizontalAlignment="Left" Margin="250,13,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpDateUstTo" HorizontalAlignment="Left" Margin="280,14,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnShow" Content="Отобразить" HorizontalAlignment="Left" Margin="400,15,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="0.008,-12.01" Click="btnShow_Click" Height="23"/>
+
+    </Grid>
+</Window>

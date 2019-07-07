@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1B5F6E8-4945-4DDB-9715-224C17EE4D0B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRM</RootNamespace>
+    <AssemblyName>CRM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Adr_installation.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BSO.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientUpdate.xaml.cs">
+      <DependentUpon>ClientUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientView_Result.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbo_Metro.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ed_izm.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FullRequest.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="G_Schetchik.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="H_Schetchik.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventarizacionnajaVedomost.xaml.cs">
+      <DependentUpon>InventarizacionnajaVedomost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Kind_of_work.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientView.xaml.cs">
+      <DependentUpon>ClientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientAdd.xaml.cs">
+      <DependentUpon>ClientAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Materialy.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Metro.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Montazhniki.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OborotnVedomosti.xaml.cs">
+      <DependentUpon>OborotnVedomosti.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OtkazyKlientov.xaml.cs">
+      <DependentUpon>OtkazyKlientov.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Params.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Perenos_request.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Postavshiki.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prihod1.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prihod2.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrihodWindow.xaml.cs">
+      <DependentUpon>PrihodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rashod1.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RashodWindow.xaml.cs">
+      <DependentUpon>RashodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rashod_2.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestList.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Request_attachment.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Request_buhg.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Request_reception.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Request_snab.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sotrudniki.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spInventVed_Result.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spOstatok_Result.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spOtkazy_Result.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spProizvodOtdel1_Result.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tEdIzm.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TekushOstatkiPoSkladu.xaml.cs">
+      <DependentUpon>TekushOstatkiPoSkladu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teplo_Schetchik.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tmp_OborotkaSklad.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vMaterialy.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vozvrat_mater1.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vozvrat_mater2.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rukovodstvo.xaml.cs">
+      <DependentUpon>Rukovodstvo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VvodPervonachalnOstatkov.xaml.cs">
+      <DependentUpon>VvodPervonachalnOstatkov.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vydacha_mater1.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vydacha_mater2.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UstanovkaNaSledDen.xaml.cs">
+      <DependentUpon>UstanovkaNaSledDen.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClientUpdate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventarizacionnajaVedomost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ClientView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClientAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OborotnVedomosti.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OtkazyKlientov.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrihodWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RashodWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TekushOstatkiPoSkladu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Password.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rukovodstvo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VvodPervonachalnOstatkov.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UstanovkaNaSledDen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Password.xaml.cs">
+      <DependentUpon>Password.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="EDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EDM.edmx</DependentUpon>
+      <LastGenOutput>EDM.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EDM.edmx.diagram">
+      <DependentUpon>EDM.edmx</DependentUpon>
+    </None>
+    <None Include="EDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EDM.edmx</DependentUpon>
+      <LastGenOutput>EDM.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

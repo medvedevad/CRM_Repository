@@ -1,0 +1,15 @@
+﻿<Window x:Class="CRM.Rukovodstvo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Заявки или логистика" Height="250" Width="300" Background="#FFBECFDF" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnZayavki" Grid.Row="0" Content="Заявки" HorizontalAlignment="Left" Margin="100,50,0,0" VerticalAlignment="Top" Width="100" Height="23" Click="btnZayavki_Click"/>
+        <Button x:Name="btnLogistika" Grid.Row="1" Content="Логистика" HorizontalAlignment="Left" Margin="100,50,0,0" VerticalAlignment="Top" Width="100" Height="23" Click="btnLogistika_Click"/>
+
+    </Grid>
+</Window>

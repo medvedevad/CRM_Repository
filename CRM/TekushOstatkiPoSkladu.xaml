@@ -1,0 +1,101 @@
+﻿<Window x:Class="CRM.TekushOstatkiPoSkladu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRM"
+        mc:Ignorable="d"
+        Title="Логистика" Height="420" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFBECFDF">
+        <Menu  Height="26" HorizontalAlignment="Stretch" Name="Menu1" VerticalAlignment="Top" Background="#FF798AC3">
+            <MenuItem Header="Приход" Name="Vvod" IsEnabled="True" Height="26" Margin="0,0,0,0" >
+                <MenuItem Header="Приходный ордер" Name="PrihodOrder" IsEnabled="True" FontWeight="Normal" Click="PrihodOrder_Click" />
+            </MenuItem>
+
+            <MenuItem Header="Расход" Name="Rashod" IsEnabled="True" Height="26" Margin="0,0,0,0" >
+                <MenuItem Header="Накладная на выдачу материалов монтажнику" Name="RashodOrder" IsEnabled="True" FontWeight="Normal" Click="RashodOrder_Click" />
+            </MenuItem>
+
+            <MenuItem Header="Отчеты" Name="Reports" IsEnabled="True" Height="26" Margin="0,0,0,0" >
+                <MenuItem Header="Оборотные ведомости" Name="miOborotnVedomosti" IsEnabled="True" FontWeight="Normal" Click="miOborotnVedomosti_Click" />
+            </MenuItem>
+
+            <MenuItem Header="Материалы" Name="miMaterialy" IsEnabled="True" Height="26" Margin="0,0,0,0" >
+                <MenuItem Header="Инвентаризационная ведомость" Name="miInventarizacionnajaVedomost" IsEnabled="True" FontWeight="Normal" Click="miInventarizacionnajaVedomost_Click" />
+                <MenuItem Header="Ввод остатков" Name="miVvodPervonachalnOstatkov" IsEnabled="True" FontWeight="Normal" Click="miVvodPervonachalnOstatkov_Click" />
+                <MenuItem Header="Печать сведений о материалах" Name="miPrintMaterialy1" IsEnabled="True" FontWeight="Normal" Click="miPrintMaterialy_Click" />
+            </MenuItem>
+
+        </Menu>
+        <Label Content="Остатки по основному складу на" HorizontalAlignment="Left" Margin="25,26,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBDateOstatki" HorizontalAlignment="Left" Height="23" Margin="220,28,0,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="100" IsReadOnly="True"/>
+        <DataGrid x:Name="dgTekOstatki" Margin="12,55,13.6,13.6" AutoGenerateColumns="False" >
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="80" />
+                    <Setter Property="Padding" Value="1" />
+                    <Setter Property="Background" Value="#FFC7D5E3" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush"  Value="Black" />
+                    <Setter Property="BorderThickness"  Value="0.3" />
+                    <Setter Property="Height"  Value="20" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Header="Артикул" x:Name="Artikul" MinWidth="110" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Artikul, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Номенклатура" x:Name="Nomenklatura" MinWidth="300" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Nomenklatura, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Ед. изм." x:Name="EdIzm" MinWidth="70" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=EdIzm, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Кол-во" x:Name="Kolvo" MinWidth="70" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Kolvo, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Ср.сут.расх." x:Name="SrSutRash" MinWidth="70" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=SrSutRash, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="Ост. в днях" x:Name="OstVDnjah" MinWidth="70" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=OstVDnjah, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnRefresh" Content="Обновить" HorizontalAlignment="Left" Margin="478,29,0,0" VerticalAlignment="Top" Height="23"  Width="75" Click="btnRefresh_Click"/>
+
+    </Grid>
+</Window>

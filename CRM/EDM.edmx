@@ -1,0 +1,2723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CRM_magModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adr_installation">
+          <Key>
+            <PropertyRef Name="id_adr_installation" />
+          </Key>
+          <Property Name="id_adr_installation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_client" Type="int" />
+          <Property Name="city_town" Type="nvarchar" MaxLength="20" />
+          <Property Name="raion" Type="nvarchar" MaxLength="30" />
+          <Property Name="street" Type="nvarchar" MaxLength="30" />
+          <Property Name="house" Type="int" />
+          <Property Name="korp" Type="nvarchar" MaxLength="10" />
+          <Property Name="flat" Type="int" />
+          <Property Name="id_metro" Type="int" />
+          <Property Name="podezd" Type="int" />
+          <Property Name="etag" Type="int" />
+          <Property Name="domofon" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="BSO">
+          <Key>
+            <PropertyRef Name="id_BSO" />
+          </Key>
+          <Property Name="id_BSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number_BSO" Type="nvarchar" MaxLength="20" />
+          <Property Name="date_BSO" Type="datetime2" Precision="7" />
+          <Property Name="id_request_reception" Type="int" />
+          <Property Name="ispolnitel" Type="nvarchar" MaxLength="25" />
+          <Property Name="date_execution" Type="datetime2" Precision="7" />
+          <Property Name="kol_ust_gor_schetch" Type="int" />
+          <Property Name="kol_ust_hol_schetch" Type="int" />
+          <Property Name="kol_zamena_hol_schetch" Type="int" />
+          <Property Name="kol_zamena_gor_schetch" Type="int" />
+          <Property Name="sum_nal_installation" Type="money" />
+          <Property Name="sum_nal_zamena" Type="money" />
+          <Property Name="sum_nal_TO" Type="money" />
+          <Property Name="sum_nal_shefmontazh" Type="money" />
+          <Property Name="sum_nal_dopolniteln_work" Type="money" />
+          <Property Name="sum_nal_dopolniteln_materialy" Type="money" />
+          <Property Name="avans" Type="money" />
+          <Property Name="sum_nal_po_BSO" Type="money" Nullable="false" />
+          <Property Name="sum_beznal_installation" Type="money" />
+          <Property Name="sum_beznal_zamena" Type="money" />
+          <Property Name="sum_beznal_TO" Type="money" />
+          <Property Name="sum_beznal_po_BSO" Type="money" Nullable="false" />
+          <Property Name="ispolnitel_proveden_TO" Type="nvarchar" MaxLength="50" />
+          <Property Name="zaplanirovan_date_TO" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="famil" Type="nvarchar" MaxLength="20" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="s_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="tel" Type="nvarchar" MaxLength="17" />
+          <Property Name="number_pasp" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CRM_mag.dbo.dbo_Metro' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="dbo_Metro">
+          <Key>
+            <PropertyRef Name="id_metro" />
+          </Key>
+          <Property Name="id_metro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_metro" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ed_izm">
+          <Key>
+            <PropertyRef Name="id_ed_izm" />
+          </Key>
+          <Property Name="id_ed_izm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameEI" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="G_Schetchik">
+          <Key>
+            <PropertyRef Name="id_gor_schetch" />
+          </Key>
+          <Property Name="id_gor_schetch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marka_gor_schetch" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="H_Schetchik">
+          <Key>
+            <PropertyRef Name="id_hol_schetch" />
+          </Key>
+          <Property Name="id_hol_schetch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marka_hol_schetch" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Kind_of_work">
+          <Key>
+            <PropertyRef Name="id_kind_of_work" />
+          </Key>
+          <Property Name="id_kind_of_work" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kind_of_work" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Materialy">
+          <Key>
+            <PropertyRef Name="id_material" />
+          </Key>
+          <Property Name="id_material" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameMaterial" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_ed_izm" Type="int" Nullable="false" />
+          <Property Name="ves1shtuki" Type="int" />
+          <Property Name="kol_v_upak" Type="int" />
+          <Property Name="kol_v_tare" Type="int" />
+          <Property Name="mesto_hraneniya" Type="nvarchar" MaxLength="50" />
+          <Property Name="norma_rashoda_na1schetchik" Type="int" />
+          <Property Name="artikul" Type="nvarchar" MaxLength="7" />
+          <Property Name="date_ostatok_prev" Type="datetime2" Precision="7" />
+          <Property Name="ostatok_prev" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="date_ostatok_cur" Type="datetime2" Precision="7" />
+          <Property Name="ostatok_cur" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Metro">
+          <Key>
+            <PropertyRef Name="id_metro" />
+          </Key>
+          <Property Name="id_metro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_metro" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Montazhniki">
+          <Key>
+            <PropertyRef Name="id_mont" />
+          </Key>
+          <Property Name="id_mont" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="full_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="tel" Type="nvarchar" MaxLength="20" />
+          <Property Name="data_uvol" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Params">
+          <Key>
+            <PropertyRef Name="id_param" />
+          </Key>
+          <Property Name="id_param" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="param_int" Type="int" />
+          <Property Name="p_date_ost" Type="datetime2" Precision="7" />
+          <Property Name="p_date_from" Type="datetime2" Precision="7" />
+          <Property Name="p_date_to" Type="datetime2" Precision="7" />
+          <Property Name="param_string" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Perenos_request">
+          <Key>
+            <PropertyRef Name="id_perenos_request" />
+          </Key>
+          <Property Name="id_perenos_request" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_zaplanirovan_vyezd" Type="datetime2" Precision="7" />
+          <Property Name="vremya" Type="nvarchar" MaxLength="10" />
+          <Property Name="ispolnitel" Type="nvarchar" MaxLength="50" />
+          <Property Name="reason_perenosa" Type="nvarchar" MaxLength="200" />
+          <Property Name="vyezd_or_perezvon" Type="bit" />
+          <Property Name="dispetcher" Type="nvarchar" MaxLength="50" />
+          <Property Name="datetime_reception" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Postavshiki">
+          <Key>
+            <PropertyRef Name="id_postavsh" />
+          </Key>
+          <Property Name="id_postavsh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_postavsh" Type="nvarchar" MaxLength="50" />
+          <Property Name="adres" Type="nvarchar" MaxLength="255" />
+          <Property Name="tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="fax" Type="nvarchar" MaxLength="15" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="manager" Type="nvarchar" MaxLength="30" />
+          <Property Name="tel_manager" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Prihod1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_prihod" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="id_postavsh" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prihod2">
+          <Key>
+            <PropertyRef Name="id_prihod2" />
+          </Key>
+          <Property Name="id_prihod2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_material" Type="int" Nullable="false" />
+          <Property Name="kod_ed_izm" Type="int" Nullable="false" />
+          <Property Name="kol" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="cena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rashod_2">
+          <Key>
+            <PropertyRef Name="id_rashod_2" />
+          </Key>
+          <Property Name="id_rashod_2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_material" Type="int" Nullable="false" />
+          <Property Name="kod_ed_izm" Type="int" Nullable="false" />
+          <Property Name="kol" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="cena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rashod1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_nakl" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="id_mont" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request_attachment">
+          <Key>
+            <PropertyRef Name="id_request_execution" />
+          </Key>
+          <Property Name="id_request_execution" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datetime_vyezda_montazhnika" Type="datetime2" Precision="7" />
+          <Property Name="time_of_work" Type="int" />
+          <Property Name="id_mont" Type="int" />
+          <Property Name="date_execution" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Request_buhg">
+          <Key>
+            <PropertyRef Name="id_request_buhg" />
+          </Key>
+          <Property Name="id_request_buhg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sum_contract" Type="money" />
+          <Property Name="nal_money" Type="bit" />
+          <Property Name="sum_contract_TO" Type="money" />
+          <Property Name="nal_oplata_TO" Type="bit" />
+        </EntityType>
+        <EntityType Name="Request_reception">
+          <Key>
+            <PropertyRef Name="id_request" />
+          </Key>
+          <Property Name="id_request" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_request" Type="date" />
+          <Property Name="id_adr_installation" Type="int" />
+          <Property Name="id_request_execution" Type="int" />
+          <Property Name="id_request_buhg" Type="int" />
+          <Property Name="id_request_snab" Type="int" />
+          <Property Name="otkaz" Type="bit" />
+          <Property Name="dispetcher" Type="nvarchar" MaxLength="40" />
+          <Property Name="id_status" Type="int" />
+          <Property Name="id_kind_of_work" Type="int" />
+          <Property Name="id_perenos_request" Type="int" />
+          <Property Name="date_otkaza" Type="datetime2" Precision="7" />
+          <Property Name="reason_otkaza" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Request_snab">
+          <Key>
+            <PropertyRef Name="id_request_snab" />
+          </Key>
+          <Property Name="id_request_snab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_hol_schetch" Type="int" />
+          <Property Name="id_gor_schetch" Type="int" />
+          <Property Name="id_teplo_schetch" Type="int" />
+          <Property Name="kol_teplo" Type="int" />
+          <Property Name="kol_hol" Type="int" />
+          <Property Name="kol_gor" Type="int" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="id_sotrudnik" />
+          </Key>
+          <Property Name="id_sotrudnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="full_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="parol" Type="nvarchar" MaxLength="6" />
+          <Property Name="rol" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CRM_mag.dbo.tEdIzm' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tEdIzm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameEI" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Teplo_Schetchik">
+          <Key>
+            <PropertyRef Name="id_teplo_schetch" />
+          </Key>
+          <Property Name="id_teplo_schetch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marka_teplo_schetch" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="tmp_OborotkaSklad">
+          <Key>
+            <PropertyRef Name="Номенклатура" />
+          </Key>
+          <Property Name="Номенклатура" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ЕдИзм" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaxZenasNDS" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="ОстатокВх" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Приход" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Выдача" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ОстатокИсх" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ОстатокИсхРубсНДС" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="Vozvrat_mater1">
+          <Key>
+            <PropertyRef Name="id_vozvr_m1" />
+          </Key>
+          <Property Name="id_vozvr_m1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_vydacha" Type="datetime2" Precision="7" />
+          <Property Name="id_mont" Type="int" />
+        </EntityType>
+        <EntityType Name="Vozvrat_mater2">
+          <Key>
+            <PropertyRef Name="id_vozvr_m2" />
+          </Key>
+          <Property Name="id_vozvr_m2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_vozvr_m1" Type="int" />
+          <Property Name="id_mater" Type="int" />
+          <Property Name="kol" Type="int" />
+        </EntityType>
+        <EntityType Name="Vydacha_mater1">
+          <Key>
+            <PropertyRef Name="id_vydacha_m1" />
+          </Key>
+          <Property Name="id_vydacha_m1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_vydacha" Type="datetime2" Precision="7" />
+          <Property Name="id_mont" Type="int" />
+          <Property Name="id_request_snab" Type="int" />
+          <Property Name="vydano" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vydacha_mater2">
+          <Key>
+            <PropertyRef Name="id_vydacha_m2" />
+          </Key>
+          <Property Name="id_vydacha_m2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_vydacha_m1" Type="int" />
+          <Property Name="id_mater" Type="int" />
+          <Property Name="kol" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CRM_mag.dbo.FullRequest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FullRequest">
+          <Key>
+            <PropertyRef Name="id_request" />
+          </Key>
+          <Property Name="city_town" Type="nvarchar" MaxLength="20" />
+          <Property Name="raion" Type="nvarchar" MaxLength="30" />
+          <Property Name="street" Type="nvarchar" MaxLength="30" />
+          <Property Name="house" Type="int" />
+          <Property Name="korp" Type="nvarchar" MaxLength="10" />
+          <Property Name="flat" Type="int" />
+          <Property Name="id_metro" Type="int" />
+          <Property Name="podezd" Type="int" />
+          <Property Name="etag" Type="int" />
+          <Property Name="domofon" Type="nvarchar" MaxLength="10" />
+          <Property Name="famil" Type="nvarchar" MaxLength="20" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="s_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="tel" Type="nvarchar" MaxLength="17" />
+          <Property Name="number_pasp" Type="nvarchar" MaxLength="10" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" />
+          <Property Name="time_of_work" Type="int" />
+          <Property Name="kind_of_work" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_zaplanirovan_vyezd" Type="datetime2" Precision="7" />
+          <Property Name="vremya" Type="nvarchar" MaxLength="10" />
+          <Property Name="ispolnitel" Type="nvarchar" MaxLength="50" />
+          <Property Name="reason_perenosa" Type="nvarchar" MaxLength="200" />
+          <Property Name="vyezd_or_perezvon" Type="bit" />
+          <Property Name="datetime_reception" Type="datetime2" Precision="7" />
+          <Property Name="date_request" Type="date" />
+          <Property Name="id_adr_installation" Type="int" />
+          <Property Name="id_request" Type="int" Nullable="false" />
+          <Property Name="id_request_execution" Type="int" />
+          <Property Name="id_request_buhg" Type="int" />
+          <Property Name="id_request_snab" Type="int" />
+          <Property Name="otkaz" Type="bit" />
+          <Property Name="id_status" Type="int" />
+          <Property Name="id_kind_of_work" Type="int" />
+          <Property Name="dispetcher" Type="nvarchar" MaxLength="40" />
+          <Property Name="sum_contract" Type="money" />
+          <Property Name="nal_money" Type="bit" />
+          <Property Name="sum_contract_TO" Type="money" />
+          <Property Name="nal_oplata_TO" Type="bit" />
+          <Property Name="marka_teplo_schetch" Type="nvarchar" MaxLength="25" />
+          <Property Name="marka_gor_schetch" Type="nvarchar" MaxLength="25" />
+          <Property Name="marka_hol_schetch" Type="nvarchar" MaxLength="25" />
+          <Property Name="id_hol_schetch" Type="int" />
+          <Property Name="id_gor_schetch" Type="int" />
+          <Property Name="id_teplo_schetch" Type="int" />
+          <Property Name="kol_teplo" Type="int" />
+          <Property Name="kol_hol" Type="int" />
+          <Property Name="kol_gor" Type="int" />
+          <Property Name="full_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="name_metro" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr1" Type="int" />
+          <Property Name="datetime_vyezda_montazhnika" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CRM_mag.dbo.RequestList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RequestList">
+          <Key>
+            <PropertyRef Name="id_client" />
+            <PropertyRef Name="id_request" />
+          </Key>
+          <Property Name="id_client" Type="int" Nullable="false" />
+          <Property Name="famil" Type="nvarchar" MaxLength="20" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="s_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="id_request" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CRM_mag.dbo.vMaterialy' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vMaterialy">
+          <Key>
+            <PropertyRef Name="id_material" />
+            <PropertyRef Name="NameMaterial" />
+          </Key>
+          <Property Name="id_material" Type="int" Nullable="false" />
+          <Property Name="NameMaterial" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ves1shtuki" Type="int" />
+          <Property Name="kol_v_upak" Type="int" />
+          <Property Name="kol_v_tare" Type="int" />
+          <Property Name="mesto_hraneniya" Type="nvarchar" MaxLength="50" />
+          <Property Name="norma_rashoda_na1schetchik" Type="int" />
+          <Property Name="nameEI" Type="nvarchar" MaxLength="10" />
+          <Property Name="artikul" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <Association Name="FK_Adr_installation_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Adr_installation" Type="Self.Adr_installation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="Adr_installation">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adr_installation_Metro">
+          <End Role="Metro" Type="Self.Metro" Multiplicity="0..1" />
+          <End Role="Adr_installation" Type="Self.Adr_installation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metro">
+              <PropertyRef Name="id_metro" />
+            </Principal>
+            <Dependent Role="Adr_installation">
+              <PropertyRef Name="id_metro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSO_Request_reception">
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="0..1" />
+          <End Role="BSO" Type="Self.BSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_reception">
+              <PropertyRef Name="id_request" />
+            </Principal>
+            <Dependent Role="BSO">
+              <PropertyRef Name="id_request_reception" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materialy_Ed_izm">
+          <End Role="Ed_izm" Type="Self.Ed_izm" Multiplicity="1" />
+          <End Role="Materialy" Type="Self.Materialy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ed_izm">
+              <PropertyRef Name="id_ed_izm" />
+            </Principal>
+            <Dependent Role="Materialy">
+              <PropertyRef Name="id_ed_izm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prihod1_Postavshiki">
+          <End Role="Postavshiki" Type="Self.Postavshiki" Multiplicity="1" />
+          <End Role="Prihod1" Type="Self.Prihod1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshiki">
+              <PropertyRef Name="id_postavsh" />
+            </Principal>
+            <Dependent Role="Prihod1">
+              <PropertyRef Name="id_postavsh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prihod2_Materialy">
+          <End Role="Materialy" Type="Self.Materialy" Multiplicity="1" />
+          <End Role="Prihod2" Type="Self.Prihod2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Prihod2">
+              <PropertyRef Name="id_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prihod2_Prihod11">
+          <End Role="Prihod1" Type="Self.Prihod1" Multiplicity="1" />
+          <End Role="Prihod2" Type="Self.Prihod2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prihod1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Prihod2">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rashod_2_Materialy">
+          <End Role="Materialy" Type="Self.Materialy" Multiplicity="1" />
+          <End Role="Rashod_2" Type="Self.Rashod_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Rashod_2">
+              <PropertyRef Name="id_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rashod_2_Rashod1">
+          <End Role="Rashod1" Type="Self.Rashod1" Multiplicity="1" />
+          <End Role="Rashod_2" Type="Self.Rashod_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rashod1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rashod_2">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rashod_nar_zak1_Montazhniki">
+          <End Role="Montazhniki" Type="Self.Montazhniki" Multiplicity="1" />
+          <End Role="Rashod1" Type="Self.Rashod1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Rashod1">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_attachment_Montazhniki">
+          <End Role="Montazhniki" Type="Self.Montazhniki" Multiplicity="0..1" />
+          <End Role="Request_attachment" Type="Self.Request_attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Request_attachment">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Adr_installation">
+          <End Role="Adr_installation" Type="Self.Adr_installation" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adr_installation">
+              <PropertyRef Name="id_adr_installation" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_adr_installation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Kind_of_work">
+          <End Role="Kind_of_work" Type="Self.Kind_of_work" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kind_of_work">
+              <PropertyRef Name="id_kind_of_work" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_kind_of_work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Perenos_request">
+          <End Role="Perenos_request" Type="Self.Perenos_request" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perenos_request">
+              <PropertyRef Name="id_perenos_request" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_perenos_request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Request_attachment">
+          <End Role="Request_attachment" Type="Self.Request_attachment" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_attachment">
+              <PropertyRef Name="id_request_execution" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_request_execution" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Request_buhg">
+          <End Role="Request_buhg" Type="Self.Request_buhg" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_buhg">
+              <PropertyRef Name="id_request_buhg" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_request_buhg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Request_snab">
+          <End Role="Request_snab" Type="Self.Request_snab" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_snab">
+              <PropertyRef Name="id_request_snab" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_request_snab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Request_reception" Type="Self.Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_snab_G_Schetchik">
+          <End Role="G_Schetchik" Type="Self.G_Schetchik" Multiplicity="0..1" />
+          <End Role="Request_snab" Type="Self.Request_snab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="G_Schetchik">
+              <PropertyRef Name="id_gor_schetch" />
+            </Principal>
+            <Dependent Role="Request_snab">
+              <PropertyRef Name="id_gor_schetch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_snab_H_Schetchik">
+          <End Role="H_Schetchik" Type="Self.H_Schetchik" Multiplicity="0..1" />
+          <End Role="Request_snab" Type="Self.Request_snab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="H_Schetchik">
+              <PropertyRef Name="id_hol_schetch" />
+            </Principal>
+            <Dependent Role="Request_snab">
+              <PropertyRef Name="id_hol_schetch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_snab_Teplo_Schetchik">
+          <End Role="Teplo_Schetchik" Type="Self.Teplo_Schetchik" Multiplicity="0..1" />
+          <End Role="Request_snab" Type="Self.Request_snab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teplo_Schetchik">
+              <PropertyRef Name="id_teplo_schetch" />
+            </Principal>
+            <Dependent Role="Request_snab">
+              <PropertyRef Name="id_teplo_schetch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vozvrat_mater1_Montazhniki">
+          <End Role="Montazhniki" Type="Self.Montazhniki" Multiplicity="0..1" />
+          <End Role="Vozvrat_mater1" Type="Self.Vozvrat_mater1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Vozvrat_mater1">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vozvrat_mater2_Materialy">
+          <End Role="Materialy" Type="Self.Materialy" Multiplicity="0..1" />
+          <End Role="Vozvrat_mater2" Type="Self.Vozvrat_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Vozvrat_mater2">
+              <PropertyRef Name="id_mater" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vozvrat_mater2_Vozvrat_mater1">
+          <End Role="Vozvrat_mater1" Type="Self.Vozvrat_mater1" Multiplicity="0..1" />
+          <End Role="Vozvrat_mater2" Type="Self.Vozvrat_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozvrat_mater1">
+              <PropertyRef Name="id_vozvr_m1" />
+            </Principal>
+            <Dependent Role="Vozvrat_mater2">
+              <PropertyRef Name="id_vozvr_m1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater1_Montazhniki">
+          <End Role="Montazhniki" Type="Self.Montazhniki" Multiplicity="0..1" />
+          <End Role="Vydacha_mater1" Type="Self.Vydacha_mater1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Vydacha_mater1">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater1_Request_snab">
+          <End Role="Request_snab" Type="Self.Request_snab" Multiplicity="0..1" />
+          <End Role="Vydacha_mater1" Type="Self.Vydacha_mater1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_snab">
+              <PropertyRef Name="id_request_snab" />
+            </Principal>
+            <Dependent Role="Vydacha_mater1">
+              <PropertyRef Name="id_request_snab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater2_Materialy">
+          <End Role="Materialy" Type="Self.Materialy" Multiplicity="0..1" />
+          <End Role="Vydacha_mater2" Type="Self.Vydacha_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Vydacha_mater2">
+              <PropertyRef Name="id_mater" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater2_Vydacha_mater1">
+          <End Role="Vydacha_mater1" Type="Self.Vydacha_mater1" Multiplicity="0..1" />
+          <End Role="Vydacha_mater2" Type="Self.Vydacha_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vydacha_mater1">
+              <PropertyRef Name="id_vydacha_m1" />
+            </Principal>
+            <Dependent Role="Vydacha_mater2">
+              <PropertyRef Name="id_vydacha_m1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ClientView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idClient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FunPrihod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+          <Parameter Name="DateInvent" Type="date" Mode="In" />
+          <Parameter Name="IdMater" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FunRashod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+          <Parameter Name="DateInvent" Type="date" Mode="In" />
+          <Parameter Name="IdMater" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInventVed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="spOborMont" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime2" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime2" Mode="In" />
+          <Parameter Name="idMont" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spOborotkaSklad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime2" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="spOstatok" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="spOtkazy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateFrom" Type="datetime2" Mode="In" />
+          <Parameter Name="dateTo" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="spProizvodOtdel1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateFrom" Type="datetime2" Mode="In" />
+          <Parameter Name="dateTo" Type="datetime2" Mode="In" />
+        </Function>
+        <EntityContainer Name="CRM_magModelStoreContainer">
+          <EntitySet Name="Adr_installation" EntityType="Self.Adr_installation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BSO" EntityType="Self.BSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ed_izm" EntityType="Self.Ed_izm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="G_Schetchik" EntityType="Self.G_Schetchik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="H_Schetchik" EntityType="Self.H_Schetchik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kind_of_work" EntityType="Self.Kind_of_work" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materialy" EntityType="Self.Materialy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metro" EntityType="Self.Metro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Montazhniki" EntityType="Self.Montazhniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Params" EntityType="Self.Params" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perenos_request" EntityType="Self.Perenos_request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavshiki" EntityType="Self.Postavshiki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prihod1" EntityType="Self.Prihod1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prihod2" EntityType="Self.Prihod2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rashod_2" EntityType="Self.Rashod_2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rashod1" EntityType="Self.Rashod1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request_attachment" EntityType="Self.Request_attachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request_buhg" EntityType="Self.Request_buhg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request_reception" EntityType="Self.Request_reception" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request_snab" EntityType="Self.Request_snab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teplo_Schetchik" EntityType="Self.Teplo_Schetchik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmp_OborotkaSklad" EntityType="Self.tmp_OborotkaSklad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vozvrat_mater1" EntityType="Self.Vozvrat_mater1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vozvrat_mater2" EntityType="Self.Vozvrat_mater2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vydacha_mater1" EntityType="Self.Vydacha_mater1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vydacha_mater2" EntityType="Self.Vydacha_mater2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbo_Metro" EntityType="Self.dbo_Metro" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [dbo_Metro].[id_metro] AS [id_metro], 
+    [dbo_Metro].[name_metro] AS [name_metro]
+    FROM [dbo].[dbo_Metro] AS [dbo_Metro]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tEdIzm" EntityType="Self.tEdIzm" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tEdIzm].[id] AS [id], 
+    [tEdIzm].[NameEI] AS [NameEI]
+    FROM [dbo].[tEdIzm] AS [tEdIzm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FullRequest" EntityType="Self.FullRequest" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FullRequest].[city_town] AS [city_town], 
+    [FullRequest].[raion] AS [raion], 
+    [FullRequest].[street] AS [street], 
+    [FullRequest].[house] AS [house], 
+    [FullRequest].[korp] AS [korp], 
+    [FullRequest].[flat] AS [flat], 
+    [FullRequest].[id_metro] AS [id_metro], 
+    [FullRequest].[podezd] AS [podezd], 
+    [FullRequest].[etag] AS [etag], 
+    [FullRequest].[domofon] AS [domofon], 
+    [FullRequest].[famil] AS [famil], 
+    [FullRequest].[f_name] AS [f_name], 
+    [FullRequest].[s_name] AS [s_name], 
+    [FullRequest].[tel] AS [tel], 
+    [FullRequest].[number_pasp] AS [number_pasp], 
+    [FullRequest].[status] AS [status], 
+    [FullRequest].[time_of_work] AS [time_of_work], 
+    [FullRequest].[kind_of_work] AS [kind_of_work], 
+    [FullRequest].[date_zaplanirovan_vyezd] AS [date_zaplanirovan_vyezd], 
+    [FullRequest].[vremya] AS [vremya], 
+    [FullRequest].[ispolnitel] AS [ispolnitel], 
+    [FullRequest].[reason_perenosa] AS [reason_perenosa], 
+    [FullRequest].[vyezd_or_perezvon] AS [vyezd_or_perezvon], 
+    [FullRequest].[datetime_reception] AS [datetime_reception], 
+    [FullRequest].[date_request] AS [date_request], 
+    [FullRequest].[id_adr_installation] AS [id_adr_installation], 
+    [FullRequest].[id_request] AS [id_request], 
+    [FullRequest].[id_request_execution] AS [id_request_execution], 
+    [FullRequest].[id_request_buhg] AS [id_request_buhg], 
+    [FullRequest].[id_request_snab] AS [id_request_snab], 
+    [FullRequest].[otkaz] AS [otkaz], 
+    [FullRequest].[id_status] AS [id_status], 
+    [FullRequest].[id_kind_of_work] AS [id_kind_of_work], 
+    [FullRequest].[dispetcher] AS [dispetcher], 
+    [FullRequest].[sum_contract] AS [sum_contract], 
+    [FullRequest].[nal_money] AS [nal_money], 
+    [FullRequest].[sum_contract_TO] AS [sum_contract_TO], 
+    [FullRequest].[nal_oplata_TO] AS [nal_oplata_TO], 
+    [FullRequest].[marka_teplo_schetch] AS [marka_teplo_schetch], 
+    [FullRequest].[marka_gor_schetch] AS [marka_gor_schetch], 
+    [FullRequest].[marka_hol_schetch] AS [marka_hol_schetch], 
+    [FullRequest].[id_hol_schetch] AS [id_hol_schetch], 
+    [FullRequest].[id_gor_schetch] AS [id_gor_schetch], 
+    [FullRequest].[id_teplo_schetch] AS [id_teplo_schetch], 
+    [FullRequest].[kol_teplo] AS [kol_teplo], 
+    [FullRequest].[kol_hol] AS [kol_hol], 
+    [FullRequest].[kol_gor] AS [kol_gor], 
+    [FullRequest].[full_name] AS [full_name], 
+    [FullRequest].[name_metro] AS [name_metro], 
+    [FullRequest].[Expr1] AS [Expr1], 
+    [FullRequest].[datetime_vyezda_montazhnika] AS [datetime_vyezda_montazhnika]
+    FROM [dbo].[FullRequest] AS [FullRequest]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RequestList" EntityType="Self.RequestList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RequestList].[id_client] AS [id_client], 
+    [RequestList].[famil] AS [famil], 
+    [RequestList].[f_name] AS [f_name], 
+    [RequestList].[s_name] AS [s_name], 
+    [RequestList].[id_request] AS [id_request]
+    FROM [dbo].[RequestList] AS [RequestList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vMaterialy" EntityType="Self.vMaterialy" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vMaterialy].[id_material] AS [id_material], 
+    [vMaterialy].[NameMaterial] AS [NameMaterial], 
+    [vMaterialy].[ves1shtuki] AS [ves1shtuki], 
+    [vMaterialy].[kol_v_upak] AS [kol_v_upak], 
+    [vMaterialy].[kol_v_tare] AS [kol_v_tare], 
+    [vMaterialy].[mesto_hraneniya] AS [mesto_hraneniya], 
+    [vMaterialy].[norma_rashoda_na1schetchik] AS [norma_rashoda_na1schetchik], 
+    [vMaterialy].[nameEI] AS [nameEI], 
+    [vMaterialy].[artikul] AS [artikul]
+    FROM [dbo].[vMaterialy] AS [vMaterialy]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Adr_installation_Client" Association="Self.FK_Adr_installation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Adr_installation" EntitySet="Adr_installation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adr_installation_Metro" Association="Self.FK_Adr_installation_Metro">
+            <End Role="Metro" EntitySet="Metro" />
+            <End Role="Adr_installation" EntitySet="Adr_installation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSO_Request_reception" Association="Self.FK_BSO_Request_reception">
+            <End Role="Request_reception" EntitySet="Request_reception" />
+            <End Role="BSO" EntitySet="BSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materialy_Ed_izm" Association="Self.FK_Materialy_Ed_izm">
+            <End Role="Ed_izm" EntitySet="Ed_izm" />
+            <End Role="Materialy" EntitySet="Materialy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prihod1_Postavshiki" Association="Self.FK_Prihod1_Postavshiki">
+            <End Role="Postavshiki" EntitySet="Postavshiki" />
+            <End Role="Prihod1" EntitySet="Prihod1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prihod2_Materialy" Association="Self.FK_Prihod2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Prihod2" EntitySet="Prihod2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prihod2_Prihod11" Association="Self.FK_Prihod2_Prihod11">
+            <End Role="Prihod1" EntitySet="Prihod1" />
+            <End Role="Prihod2" EntitySet="Prihod2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rashod_2_Materialy" Association="Self.FK_Rashod_2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Rashod_2" EntitySet="Rashod_2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rashod_2_Rashod1" Association="Self.FK_Rashod_2_Rashod1">
+            <End Role="Rashod1" EntitySet="Rashod1" />
+            <End Role="Rashod_2" EntitySet="Rashod_2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rashod_nar_zak1_Montazhniki" Association="Self.FK_Rashod_nar_zak1_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Rashod1" EntitySet="Rashod1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_attachment_Montazhniki" Association="Self.FK_Request_attachment_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Request_attachment" EntitySet="Request_attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Adr_installation" Association="Self.FK_Request_reception_Adr_installation">
+            <End Role="Adr_installation" EntitySet="Adr_installation" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Kind_of_work" Association="Self.FK_Request_reception_Kind_of_work">
+            <End Role="Kind_of_work" EntitySet="Kind_of_work" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Perenos_request" Association="Self.FK_Request_reception_Perenos_request">
+            <End Role="Perenos_request" EntitySet="Perenos_request" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Request_attachment" Association="Self.FK_Request_reception_Request_attachment">
+            <End Role="Request_attachment" EntitySet="Request_attachment" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Request_buhg" Association="Self.FK_Request_reception_Request_buhg">
+            <End Role="Request_buhg" EntitySet="Request_buhg" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Request_snab" Association="Self.FK_Request_reception_Request_snab">
+            <End Role="Request_snab" EntitySet="Request_snab" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Status" Association="Self.FK_Request_reception_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_snab_G_Schetchik" Association="Self.FK_Request_snab_G_Schetchik">
+            <End Role="G_Schetchik" EntitySet="G_Schetchik" />
+            <End Role="Request_snab" EntitySet="Request_snab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_snab_H_Schetchik" Association="Self.FK_Request_snab_H_Schetchik">
+            <End Role="H_Schetchik" EntitySet="H_Schetchik" />
+            <End Role="Request_snab" EntitySet="Request_snab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_snab_Teplo_Schetchik" Association="Self.FK_Request_snab_Teplo_Schetchik">
+            <End Role="Teplo_Schetchik" EntitySet="Teplo_Schetchik" />
+            <End Role="Request_snab" EntitySet="Request_snab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vozvrat_mater1_Montazhniki" Association="Self.FK_Vozvrat_mater1_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Vozvrat_mater1" EntitySet="Vozvrat_mater1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vozvrat_mater2_Materialy" Association="Self.FK_Vozvrat_mater2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Vozvrat_mater2" EntitySet="Vozvrat_mater2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vozvrat_mater2_Vozvrat_mater1" Association="Self.FK_Vozvrat_mater2_Vozvrat_mater1">
+            <End Role="Vozvrat_mater1" EntitySet="Vozvrat_mater1" />
+            <End Role="Vozvrat_mater2" EntitySet="Vozvrat_mater2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater1_Montazhniki" Association="Self.FK_Vydacha_mater1_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Vydacha_mater1" EntitySet="Vydacha_mater1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater1_Request_snab" Association="Self.FK_Vydacha_mater1_Request_snab">
+            <End Role="Request_snab" EntitySet="Request_snab" />
+            <End Role="Vydacha_mater1" EntitySet="Vydacha_mater1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater2_Materialy" Association="Self.FK_Vydacha_mater2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Vydacha_mater2" EntitySet="Vydacha_mater2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater2_Vydacha_mater1" Association="Self.FK_Vydacha_mater2_Vydacha_mater1">
+            <End Role="Vydacha_mater1" EntitySet="Vydacha_mater1" />
+            <End Role="Vydacha_mater2" EntitySet="Vydacha_mater2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRM_magModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CRM_magEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BSO" EntityType="CRM_magModel.BSO" />
+          <EntitySet Name="Ed_izm" EntityType="CRM_magModel.Ed_izm" />
+          <EntitySet Name="Postavshiki" EntityType="CRM_magModel.Postavshiki" />
+          <EntitySet Name="Request_buhg" EntityType="CRM_magModel.Request_buhg" />
+          <EntitySet Name="Sotrudniki" EntityType="CRM_magModel.Sotrudniki" />
+          <EntitySet Name="sysdiagrams" EntityType="CRM_magModel.sysdiagrams" />
+          <EntitySet Name="Vozvrat_mater1" EntityType="CRM_magModel.Vozvrat_mater1" />
+          <EntitySet Name="Vozvrat_mater2" EntityType="CRM_magModel.Vozvrat_mater2" />
+          <EntitySet Name="Vydacha_mater1" EntityType="CRM_magModel.Vydacha_mater1" />
+          <EntitySet Name="Vydacha_mater2" EntityType="CRM_magModel.Vydacha_mater2" />
+          <AssociationSet Name="FK_Vozvrat_mater2_Vozvrat_mater1" Association="CRM_magModel.FK_Vozvrat_mater2_Vozvrat_mater1">
+            <End Role="Vozvrat_mater1" EntitySet="Vozvrat_mater1" />
+            <End Role="Vozvrat_mater2" EntitySet="Vozvrat_mater2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater2_Vydacha_mater1" Association="CRM_magModel.FK_Vydacha_mater2_Vydacha_mater1">
+            <End Role="Vydacha_mater1" EntitySet="Vydacha_mater1" />
+            <End Role="Vydacha_mater2" EntitySet="Vydacha_mater2" />
+          </AssociationSet>
+          <EntitySet Name="Kind_of_work" EntityType="CRM_magModel.Kind_of_work" />
+          <EntitySet Name="Status" EntityType="CRM_magModel.Status" />
+          <EntitySet Name="G_Schetchik" EntityType="CRM_magModel.G_Schetchik" />
+          <EntitySet Name="H_Schetchik" EntityType="CRM_magModel.H_Schetchik" />
+          <EntitySet Name="Teplo_Schetchik" EntityType="CRM_magModel.Teplo_Schetchik" />
+          <EntitySet Name="Request_snab" EntityType="CRM_magModel.Request_snab" />
+          <AssociationSet Name="FK_Request_snab_G_Schetchik" Association="CRM_magModel.FK_Request_snab_G_Schetchik">
+            <End Role="G_Schetchik" EntitySet="G_Schetchik" />
+            <End Role="Request_snab" EntitySet="Request_snab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_snab_H_Schetchik" Association="CRM_magModel.FK_Request_snab_H_Schetchik">
+            <End Role="H_Schetchik" EntitySet="H_Schetchik" />
+            <End Role="Request_snab" EntitySet="Request_snab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_snab_Teplo_Schetchik" Association="CRM_magModel.FK_Request_snab_Teplo_Schetchik">
+            <End Role="Teplo_Schetchik" EntitySet="Teplo_Schetchik" />
+            <End Role="Request_snab" EntitySet="Request_snab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater1_Request_snab" Association="CRM_magModel.FK_Vydacha_mater1_Request_snab">
+            <End Role="Request_snab" EntitySet="Request_snab" />
+            <End Role="Vydacha_mater1" EntitySet="Vydacha_mater1" />
+          </AssociationSet>
+          <EntitySet Name="Montazhniki" EntityType="CRM_magModel.Montazhniki" />
+          <AssociationSet Name="FK_Vozvrat_mater1_Montazhniki" Association="CRM_magModel.FK_Vozvrat_mater1_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Vozvrat_mater1" EntitySet="Vozvrat_mater1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater1_Montazhniki" Association="CRM_magModel.FK_Vydacha_mater1_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Vydacha_mater1" EntitySet="Vydacha_mater1" />
+          </AssociationSet>
+          <EntitySet Name="Perenos_request" EntityType="CRM_magModel.Perenos_request" />
+          <EntitySet Name="Client" EntityType="CRM_magModel.Client" />
+          <EntitySet Name="Adr_installation" EntityType="CRM_magModel.Adr_installation" />
+          <EntitySet Name="Metro" EntityType="CRM_magModel.Metro" />
+          <AssociationSet Name="FK_Adr_installation_Client" Association="CRM_magModel.FK_Adr_installation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Adr_installation" EntitySet="Adr_installation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adr_installation_Metro" Association="CRM_magModel.FK_Adr_installation_Metro">
+            <End Role="Metro" EntitySet="Metro" />
+            <End Role="Adr_installation" EntitySet="Adr_installation" />
+          </AssociationSet>
+          <EntitySet Name="tEdIzm" EntityType="CRM_magModel.tEdIzm" />
+          <EntitySet Name="FullRequest" EntityType="CRM_magModel.FullRequest" />
+          <EntitySet Name="RequestList" EntityType="CRM_magModel.RequestList" />
+          <EntitySet Name="dbo_Metro" EntityType="CRM_magModel.dbo_Metro" />
+          <EntitySet Name="vMaterialy" EntityType="CRM_magModel.vMaterialy" />
+          <EntitySet Name="Prihod1" EntityType="CRM_magModel.Prihod1" />
+          <EntitySet Name="Prihod2" EntityType="CRM_magModel.Prihod2" />
+          <AssociationSet Name="FK_Prihod1_Postavshiki" Association="CRM_magModel.FK_Prihod1_Postavshiki">
+            <End Role="Postavshiki" EntitySet="Postavshiki" />
+            <End Role="Prihod1" EntitySet="Prihod1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prihod2_Prihod11" Association="CRM_magModel.FK_Prihod2_Prihod11">
+            <End Role="Prihod1" EntitySet="Prihod1" />
+            <End Role="Prihod2" EntitySet="Prihod2" />
+          </AssociationSet>
+          <EntitySet Name="Rashod1" EntityType="CRM_magModel.Rashod1" />
+          <AssociationSet Name="FK_Rashod_nar_zak1_Montazhniki" Association="CRM_magModel.FK_Rashod_nar_zak1_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Rashod1" EntitySet="Rashod1" />
+          </AssociationSet>
+          <EntitySet Name="Materialy" EntityType="CRM_magModel.Materialy" />
+          <AssociationSet Name="FK_Materialy_Ed_izm" Association="CRM_magModel.FK_Materialy_Ed_izm">
+            <End Role="Ed_izm" EntitySet="Ed_izm" />
+            <End Role="Materialy" EntitySet="Materialy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prihod2_Materialy" Association="CRM_magModel.FK_Prihod2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Prihod2" EntitySet="Prihod2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vozvrat_mater2_Materialy" Association="CRM_magModel.FK_Vozvrat_mater2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Vozvrat_mater2" EntitySet="Vozvrat_mater2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vydacha_mater2_Materialy" Association="CRM_magModel.FK_Vydacha_mater2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Vydacha_mater2" EntitySet="Vydacha_mater2" />
+          </AssociationSet>
+          <FunctionImport Name="spInventVed" ReturnType="Collection(CRM_magModel.spInventVed_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="tmp_OborotkaSklad" EntityType="CRM_magModel.tmp_OborotkaSklad" />
+          <FunctionImport Name="spOborotkaSklad">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spOborMont">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="idMont" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Params" EntityType="CRM_magModel.Params" />
+          <EntitySet Name="Request_reception" EntityType="CRM_magModel.Request_reception" />
+          <AssociationSet Name="FK_Request_reception_Adr_installation" Association="CRM_magModel.FK_Request_reception_Adr_installation">
+            <End Role="Adr_installation" EntitySet="Adr_installation" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSO_Request_reception" Association="CRM_magModel.FK_BSO_Request_reception">
+            <End Role="Request_reception" EntitySet="Request_reception" />
+            <End Role="BSO" EntitySet="BSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Kind_of_work" Association="CRM_magModel.FK_Request_reception_Kind_of_work">
+            <End Role="Kind_of_work" EntitySet="Kind_of_work" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Perenos_request" Association="CRM_magModel.FK_Request_reception_Perenos_request">
+            <End Role="Perenos_request" EntitySet="Perenos_request" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Request_buhg" Association="CRM_magModel.FK_Request_reception_Request_buhg">
+            <End Role="Request_buhg" EntitySet="Request_buhg" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Request_snab" Association="CRM_magModel.FK_Request_reception_Request_snab">
+            <End Role="Request_snab" EntitySet="Request_snab" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Status" Association="CRM_magModel.FK_Request_reception_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <FunctionImport Name="spOtkazy" ReturnType="Collection(CRM_magModel.spOtkazy_Result)">
+            <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="dateTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spProizvodOtdel1" ReturnType="Collection(CRM_magModel.spProizvodOtdel1_Result)">
+            <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="dateTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Request_attachment" EntityType="CRM_magModel.Request_attachment" />
+          <AssociationSet Name="FK_Request_attachment_Montazhniki" Association="CRM_magModel.FK_Request_attachment_Montazhniki">
+            <End Role="Montazhniki" EntitySet="Montazhniki" />
+            <End Role="Request_attachment" EntitySet="Request_attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_reception_Request_attachment" Association="CRM_magModel.FK_Request_reception_Request_attachment">
+            <End Role="Request_attachment" EntitySet="Request_attachment" />
+            <End Role="Request_reception" EntitySet="Request_reception" />
+          </AssociationSet>
+          <FunctionImport Name="ClientView" ReturnType="Collection(CRM_magModel.ClientView_Result)">
+          <Parameter Name="idClient" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Rashod_2" EntityType="CRM_magModel.Rashod_2" />
+          <AssociationSet Name="FK_Rashod_2_Materialy" Association="CRM_magModel.FK_Rashod_2_Materialy">
+            <End Role="Materialy" EntitySet="Materialy" />
+            <End Role="Rashod_2" EntitySet="Rashod_2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rashod_2_Rashod1" Association="CRM_magModel.FK_Rashod_2_Rashod1">
+            <End Role="Rashod1" EntitySet="Rashod1" />
+            <End Role="Rashod_2" EntitySet="Rashod_2" />
+          </AssociationSet>
+          <FunctionImport Name="spOstatok" ReturnType="Collection(CRM_magModel.spOstatok_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="BSO">
+          <Key>
+            <PropertyRef Name="id_BSO" />
+          </Key>
+          <Property Name="id_BSO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number_BSO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="date_BSO" Type="DateTime" Precision="7" />
+          <Property Name="id_request_reception" Type="Int32" />
+          <Property Name="ispolnitel" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="date_execution" Type="DateTime" Precision="7" />
+          <Property Name="kol_ust_gor_schetch" Type="Int32" />
+          <Property Name="kol_ust_hol_schetch" Type="Int32" />
+          <Property Name="kol_zamena_hol_schetch" Type="Int32" />
+          <Property Name="kol_zamena_gor_schetch" Type="Int32" />
+          <Property Name="sum_nal_installation" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_nal_zamena" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_nal_TO" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_nal_shefmontazh" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_nal_dopolniteln_work" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_nal_dopolniteln_materialy" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="avans" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_nal_po_BSO" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="sum_beznal_installation" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_beznal_zamena" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_beznal_TO" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sum_beznal_po_BSO" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ispolnitel_proveden_TO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zaplanirovan_date_TO" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_BSO_Request_reception" FromRole="BSO" ToRole="Request_reception" />
+        </EntityType>
+        <EntityType Name="Ed_izm">
+          <Key>
+            <PropertyRef Name="id_ed_izm" />
+          </Key>
+          <Property Name="id_ed_izm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameEI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materialy" Relationship="CRM_magModel.FK_Materialy_Ed_izm" FromRole="Ed_izm" ToRole="Materialy" />
+        </EntityType>
+        <EntityType Name="Postavshiki">
+          <Key>
+            <PropertyRef Name="id_postavsh" />
+          </Key>
+          <Property Name="id_postavsh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_postavsh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="manager" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="tel_manager" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Prihod1" Relationship="CRM_magModel.FK_Prihod1_Postavshiki" FromRole="Postavshiki" ToRole="Prihod1" />
+        </EntityType>
+        <EntityType Name="Request_buhg">
+          <Key>
+            <PropertyRef Name="id_request_buhg" />
+          </Key>
+          <Property Name="id_request_buhg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sum_contract" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="nal_money" Type="Boolean" />
+          <Property Name="sum_contract_TO" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="nal_oplata_TO" Type="Boolean" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Request_buhg" FromRole="Request_buhg" ToRole="Request_reception" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="id_sotrudnik" />
+          </Key>
+          <Property Name="id_sotrudnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="full_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="parol" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="rol" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vozvrat_mater1">
+          <Key>
+            <PropertyRef Name="id_vozvr_m1" />
+          </Key>
+          <Property Name="id_vozvr_m1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_vydacha" Type="DateTime" Precision="7" />
+          <Property Name="id_mont" Type="Int32" />
+          <NavigationProperty Name="Vozvrat_mater2" Relationship="CRM_magModel.FK_Vozvrat_mater2_Vozvrat_mater1" FromRole="Vozvrat_mater1" ToRole="Vozvrat_mater2" />
+          <NavigationProperty Name="Montazhniki" Relationship="CRM_magModel.FK_Vozvrat_mater1_Montazhniki" FromRole="Vozvrat_mater1" ToRole="Montazhniki" />
+        </EntityType>
+        <EntityType Name="Vozvrat_mater2">
+          <Key>
+            <PropertyRef Name="id_vozvr_m2" />
+          </Key>
+          <Property Name="id_vozvr_m2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_vozvr_m1" Type="Int32" />
+          <Property Name="id_mater" Type="Int32" />
+          <Property Name="kol" Type="Int32" />
+          <NavigationProperty Name="Vozvrat_mater1" Relationship="CRM_magModel.FK_Vozvrat_mater2_Vozvrat_mater1" FromRole="Vozvrat_mater2" ToRole="Vozvrat_mater1" />
+          <NavigationProperty Name="Materialy" Relationship="CRM_magModel.FK_Vozvrat_mater2_Materialy" FromRole="Vozvrat_mater2" ToRole="Materialy" />
+        </EntityType>
+        <EntityType Name="Vydacha_mater1">
+          <Key>
+            <PropertyRef Name="id_vydacha_m1" />
+          </Key>
+          <Property Name="id_vydacha_m1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_vydacha" Type="DateTime" Precision="7" />
+          <Property Name="id_mont" Type="Int32" />
+          <Property Name="id_request_snab" Type="Int32" />
+          <Property Name="vydano" Type="Boolean" />
+          <NavigationProperty Name="Vydacha_mater2" Relationship="CRM_magModel.FK_Vydacha_mater2_Vydacha_mater1" FromRole="Vydacha_mater1" ToRole="Vydacha_mater2" />
+          <NavigationProperty Name="Request_snab" Relationship="CRM_magModel.FK_Vydacha_mater1_Request_snab" FromRole="Vydacha_mater1" ToRole="Request_snab" />
+          <NavigationProperty Name="Montazhniki" Relationship="CRM_magModel.FK_Vydacha_mater1_Montazhniki" FromRole="Vydacha_mater1" ToRole="Montazhniki" />
+        </EntityType>
+        <EntityType Name="Vydacha_mater2">
+          <Key>
+            <PropertyRef Name="id_vydacha_m2" />
+          </Key>
+          <Property Name="id_vydacha_m2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_vydacha_m1" Type="Int32" />
+          <Property Name="id_mater" Type="Int32" />
+          <Property Name="kol" Type="Int32" />
+          <NavigationProperty Name="Vydacha_mater1" Relationship="CRM_magModel.FK_Vydacha_mater2_Vydacha_mater1" FromRole="Vydacha_mater2" ToRole="Vydacha_mater1" />
+          <NavigationProperty Name="Materialy" Relationship="CRM_magModel.FK_Vydacha_mater2_Materialy" FromRole="Vydacha_mater2" ToRole="Materialy" />
+        </EntityType>
+        <Association Name="FK_Vozvrat_mater2_Vozvrat_mater1">
+          <End Type="CRM_magModel.Vozvrat_mater1" Role="Vozvrat_mater1" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vozvrat_mater2" Role="Vozvrat_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozvrat_mater1">
+              <PropertyRef Name="id_vozvr_m1" />
+            </Principal>
+            <Dependent Role="Vozvrat_mater2">
+              <PropertyRef Name="id_vozvr_m1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater2_Vydacha_mater1">
+          <End Type="CRM_magModel.Vydacha_mater1" Role="Vydacha_mater1" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vydacha_mater2" Role="Vydacha_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vydacha_mater1">
+              <PropertyRef Name="id_vydacha_m1" />
+            </Principal>
+            <Dependent Role="Vydacha_mater2">
+              <PropertyRef Name="id_vydacha_m1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kind_of_work">
+          <Key>
+            <PropertyRef Name="id_kind_of_work" />
+          </Key>
+          <Property Name="id_kind_of_work" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kind_of_work1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Kind_of_work" FromRole="Kind_of_work" ToRole="Request_reception" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Status" FromRole="Status" ToRole="Request_reception" />
+        </EntityType>
+        <EntityType Name="G_Schetchik">
+          <Key>
+            <PropertyRef Name="id_gor_schetch" />
+          </Key>
+          <Property Name="id_gor_schetch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marka_gor_schetch" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request_snab" Relationship="CRM_magModel.FK_Request_snab_G_Schetchik" FromRole="G_Schetchik" ToRole="Request_snab" />
+        </EntityType>
+        <EntityType Name="H_Schetchik">
+          <Key>
+            <PropertyRef Name="id_hol_schetch" />
+          </Key>
+          <Property Name="id_hol_schetch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marka_hol_schetch" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request_snab" Relationship="CRM_magModel.FK_Request_snab_H_Schetchik" FromRole="H_Schetchik" ToRole="Request_snab" />
+        </EntityType>
+        <EntityType Name="Teplo_Schetchik">
+          <Key>
+            <PropertyRef Name="id_teplo_schetch" />
+          </Key>
+          <Property Name="id_teplo_schetch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marka_teplo_schetch" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request_snab" Relationship="CRM_magModel.FK_Request_snab_Teplo_Schetchik" FromRole="Teplo_Schetchik" ToRole="Request_snab" />
+        </EntityType>
+        <EntityType Name="Request_snab">
+          <Key>
+            <PropertyRef Name="id_request_snab" />
+          </Key>
+          <Property Name="id_request_snab" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_hol_schetch" Type="Int32" />
+          <Property Name="id_gor_schetch" Type="Int32" />
+          <Property Name="id_teplo_schetch" Type="Int32" />
+          <Property Name="kol_teplo" Type="Int32" />
+          <Property Name="kol_hol" Type="Int32" />
+          <Property Name="kol_gor" Type="Int32" />
+          <NavigationProperty Name="G_Schetchik" Relationship="CRM_magModel.FK_Request_snab_G_Schetchik" FromRole="Request_snab" ToRole="G_Schetchik" />
+          <NavigationProperty Name="H_Schetchik" Relationship="CRM_magModel.FK_Request_snab_H_Schetchik" FromRole="Request_snab" ToRole="H_Schetchik" />
+          <NavigationProperty Name="Teplo_Schetchik" Relationship="CRM_magModel.FK_Request_snab_Teplo_Schetchik" FromRole="Request_snab" ToRole="Teplo_Schetchik" />
+          <NavigationProperty Name="Vydacha_mater1" Relationship="CRM_magModel.FK_Vydacha_mater1_Request_snab" FromRole="Request_snab" ToRole="Vydacha_mater1" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Request_snab" FromRole="Request_snab" ToRole="Request_reception" />
+        </EntityType>
+        <Association Name="FK_Request_snab_G_Schetchik">
+          <End Type="CRM_magModel.G_Schetchik" Role="G_Schetchik" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_snab" Role="Request_snab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="G_Schetchik">
+              <PropertyRef Name="id_gor_schetch" />
+            </Principal>
+            <Dependent Role="Request_snab">
+              <PropertyRef Name="id_gor_schetch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_snab_H_Schetchik">
+          <End Type="CRM_magModel.H_Schetchik" Role="H_Schetchik" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_snab" Role="Request_snab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="H_Schetchik">
+              <PropertyRef Name="id_hol_schetch" />
+            </Principal>
+            <Dependent Role="Request_snab">
+              <PropertyRef Name="id_hol_schetch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_snab_Teplo_Schetchik">
+          <End Type="CRM_magModel.Teplo_Schetchik" Role="Teplo_Schetchik" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_snab" Role="Request_snab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teplo_Schetchik">
+              <PropertyRef Name="id_teplo_schetch" />
+            </Principal>
+            <Dependent Role="Request_snab">
+              <PropertyRef Name="id_teplo_schetch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater1_Request_snab">
+          <End Type="CRM_magModel.Request_snab" Role="Request_snab" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vydacha_mater1" Role="Vydacha_mater1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_snab">
+              <PropertyRef Name="id_request_snab" />
+            </Principal>
+            <Dependent Role="Vydacha_mater1">
+              <PropertyRef Name="id_request_snab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Montazhniki">
+          <Key>
+            <PropertyRef Name="id_mont" />
+          </Key>
+          <Property Name="id_mont" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="full_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="data_uvol" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Vozvrat_mater1" Relationship="CRM_magModel.FK_Vozvrat_mater1_Montazhniki" FromRole="Montazhniki" ToRole="Vozvrat_mater1" />
+          <NavigationProperty Name="Vydacha_mater1" Relationship="CRM_magModel.FK_Vydacha_mater1_Montazhniki" FromRole="Montazhniki" ToRole="Vydacha_mater1" />
+          <NavigationProperty Name="Rashod1" Relationship="CRM_magModel.FK_Rashod_nar_zak1_Montazhniki" FromRole="Montazhniki" ToRole="Rashod1" />
+          <NavigationProperty Name="Request_attachment" Relationship="CRM_magModel.FK_Request_attachment_Montazhniki" FromRole="Montazhniki" ToRole="Request_attachment" />
+        </EntityType>
+        <Association Name="FK_Vozvrat_mater1_Montazhniki">
+          <End Type="CRM_magModel.Montazhniki" Role="Montazhniki" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vozvrat_mater1" Role="Vozvrat_mater1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Vozvrat_mater1">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater1_Montazhniki">
+          <End Type="CRM_magModel.Montazhniki" Role="Montazhniki" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vydacha_mater1" Role="Vydacha_mater1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Vydacha_mater1">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Perenos_request">
+          <Key>
+            <PropertyRef Name="id_perenos_request" />
+          </Key>
+          <Property Name="id_perenos_request" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_zaplanirovan_vyezd" Type="DateTime" Precision="7" />
+          <Property Name="vremya" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ispolnitel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reason_perenosa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="vyezd_or_perezvon" Type="Boolean" />
+          <Property Name="dispetcher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datetime_reception" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Perenos_request" FromRole="Perenos_request" ToRole="Request_reception" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="famil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="f_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="s_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="number_pasp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adr_installation" Relationship="CRM_magModel.FK_Adr_installation_Client" FromRole="Client" ToRole="Adr_installation" />
+        </EntityType>
+        <EntityType Name="Adr_installation">
+          <Key>
+            <PropertyRef Name="id_adr_installation" />
+          </Key>
+          <Property Name="id_adr_installation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_client" Type="Int32" />
+          <Property Name="city_town" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="raion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="house" Type="Int32" />
+          <Property Name="korp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="flat" Type="Int32" />
+          <Property Name="id_metro" Type="Int32" />
+          <Property Name="podezd" Type="Int32" />
+          <Property Name="etag" Type="Int32" />
+          <Property Name="domofon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="CRM_magModel.FK_Adr_installation_Client" FromRole="Adr_installation" ToRole="Client" />
+          <NavigationProperty Name="Metro" Relationship="CRM_magModel.FK_Adr_installation_Metro" FromRole="Adr_installation" ToRole="Metro" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Adr_installation" FromRole="Adr_installation" ToRole="Request_reception" />
+        </EntityType>
+        <EntityType Name="Metro">
+          <Key>
+            <PropertyRef Name="id_metro" />
+          </Key>
+          <Property Name="id_metro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_metro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adr_installation" Relationship="CRM_magModel.FK_Adr_installation_Metro" FromRole="Metro" ToRole="Adr_installation" />
+        </EntityType>
+        <Association Name="FK_Adr_installation_Client">
+          <End Type="CRM_magModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Adr_installation" Role="Adr_installation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="Adr_installation">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adr_installation_Metro">
+          <End Type="CRM_magModel.Metro" Role="Metro" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Adr_installation" Role="Adr_installation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metro">
+              <PropertyRef Name="id_metro" />
+            </Principal>
+            <Dependent Role="Adr_installation">
+              <PropertyRef Name="id_metro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tEdIzm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FullRequest">
+          <Key>
+            <PropertyRef Name="id_request" />
+          </Key>
+          <Property Name="city_town" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="raion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="house" Type="Int32" />
+          <Property Name="korp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="flat" Type="Int32" />
+          <Property Name="id_metro" Type="Int32" />
+          <Property Name="podezd" Type="Int32" />
+          <Property Name="etag" Type="Int32" />
+          <Property Name="domofon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="famil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="f_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="s_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="number_pasp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="time_of_work" Type="Int32" />
+          <Property Name="kind_of_work" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_zaplanirovan_vyezd" Type="DateTime" Precision="7" />
+          <Property Name="vremya" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ispolnitel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reason_perenosa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="vyezd_or_perezvon" Type="Boolean" />
+          <Property Name="datetime_reception" Type="DateTime" Precision="7" />
+          <Property Name="date_request" Type="DateTime" Precision="0" />
+          <Property Name="id_adr_installation" Type="Int32" />
+          <Property Name="id_request" Type="Int32" Nullable="false" />
+          <Property Name="id_request_execution" Type="Int32" />
+          <Property Name="id_request_buhg" Type="Int32" />
+          <Property Name="id_request_snab" Type="Int32" />
+          <Property Name="otkaz" Type="Boolean" />
+          <Property Name="id_status" Type="Int32" />
+          <Property Name="id_kind_of_work" Type="Int32" />
+          <Property Name="dispetcher" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="sum_contract" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="nal_money" Type="Boolean" />
+          <Property Name="sum_contract_TO" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="nal_oplata_TO" Type="Boolean" />
+          <Property Name="marka_teplo_schetch" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="marka_gor_schetch" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="marka_hol_schetch" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="id_hol_schetch" Type="Int32" />
+          <Property Name="id_gor_schetch" Type="Int32" />
+          <Property Name="id_teplo_schetch" Type="Int32" />
+          <Property Name="kol_teplo" Type="Int32" />
+          <Property Name="kol_hol" Type="Int32" />
+          <Property Name="kol_gor" Type="Int32" />
+          <Property Name="full_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="name_metro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr1" Type="Int32" />
+          <Property Name="datetime_vyezda_montazhnika" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="RequestList">
+          <Key>
+            <PropertyRef Name="id_client" />
+            <PropertyRef Name="id_request" />
+          </Key>
+          <Property Name="id_client" Type="Int32" Nullable="false" />
+          <Property Name="famil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="f_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="s_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_request" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbo_Metro">
+          <Key>
+            <PropertyRef Name="id_metro" />
+          </Key>
+          <Property Name="id_metro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_metro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vMaterialy">
+          <Key>
+            <PropertyRef Name="id_material" />
+            <PropertyRef Name="NameMaterial" />
+          </Key>
+          <Property Name="id_material" Type="Int32" Nullable="false" />
+          <Property Name="NameMaterial" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ves1shtuki" Type="Int32" />
+          <Property Name="kol_v_upak" Type="Int32" />
+          <Property Name="kol_v_tare" Type="Int32" />
+          <Property Name="mesto_hraneniya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="norma_rashoda_na1schetchik" Type="Int32" />
+          <Property Name="nameEI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="artikul" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Prihod1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_prihod" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="id_postavsh" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Postavshiki" Relationship="CRM_magModel.FK_Prihod1_Postavshiki" FromRole="Prihod1" ToRole="Postavshiki" />
+          <NavigationProperty Name="Prihod2" Relationship="CRM_magModel.FK_Prihod2_Prihod11" FromRole="Prihod1" ToRole="Prihod2" />
+        </EntityType>
+        <EntityType Name="Prihod2">
+          <Key>
+            <PropertyRef Name="id_prihod2" />
+          </Key>
+          <Property Name="id_prihod2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_material" Type="Int32" Nullable="false" />
+          <Property Name="kod_ed_izm" Type="Int32" Nullable="false" />
+          <Property Name="kol" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="cena" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Prihod1" Relationship="CRM_magModel.FK_Prihod2_Prihod11" FromRole="Prihod2" ToRole="Prihod1" />
+          <NavigationProperty Name="Materialy" Relationship="CRM_magModel.FK_Prihod2_Materialy" FromRole="Prihod2" ToRole="Materialy" />
+        </EntityType>
+        <Association Name="FK_Prihod1_Postavshiki">
+          <End Type="CRM_magModel.Postavshiki" Role="Postavshiki" Multiplicity="1" />
+          <End Type="CRM_magModel.Prihod1" Role="Prihod1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshiki">
+              <PropertyRef Name="id_postavsh" />
+            </Principal>
+            <Dependent Role="Prihod1">
+              <PropertyRef Name="id_postavsh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prihod2_Prihod11">
+          <End Type="CRM_magModel.Prihod1" Role="Prihod1" Multiplicity="1" />
+          <End Type="CRM_magModel.Prihod2" Role="Prihod2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prihod1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Prihod2">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rashod1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_nakl" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="id_mont" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Montazhniki" Relationship="CRM_magModel.FK_Rashod_nar_zak1_Montazhniki" FromRole="Rashod1" ToRole="Montazhniki" />
+          <NavigationProperty Name="Rashod_2" Relationship="CRM_magModel.FK_Rashod_2_Rashod1" FromRole="Rashod1" ToRole="Rashod_2" />
+        </EntityType>
+        <Association Name="FK_Rashod_nar_zak1_Montazhniki">
+          <End Type="CRM_magModel.Montazhniki" Role="Montazhniki" Multiplicity="1" />
+          <End Type="CRM_magModel.Rashod1" Role="Rashod1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Rashod1">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Materialy">
+          <Key>
+            <PropertyRef Name="id_material" />
+          </Key>
+          <Property Name="id_material" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameMaterial" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id_ed_izm" Type="Int32" Nullable="false" />
+          <Property Name="ves1shtuki" Type="Int32" />
+          <Property Name="kol_v_upak" Type="Int32" />
+          <Property Name="kol_v_tare" Type="Int32" />
+          <Property Name="mesto_hraneniya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="norma_rashoda_na1schetchik" Type="Int32" />
+          <Property Name="artikul" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="date_ostatok_prev" Type="DateTime" Precision="7" />
+          <Property Name="ostatok_prev" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="date_ostatok_cur" Type="DateTime" Precision="7" />
+          <Property Name="ostatok_cur" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Ed_izm" Relationship="CRM_magModel.FK_Materialy_Ed_izm" FromRole="Materialy" ToRole="Ed_izm" />
+          <NavigationProperty Name="Prihod2" Relationship="CRM_magModel.FK_Prihod2_Materialy" FromRole="Materialy" ToRole="Prihod2" />
+          <NavigationProperty Name="Vozvrat_mater2" Relationship="CRM_magModel.FK_Vozvrat_mater2_Materialy" FromRole="Materialy" ToRole="Vozvrat_mater2" />
+          <NavigationProperty Name="Vydacha_mater2" Relationship="CRM_magModel.FK_Vydacha_mater2_Materialy" FromRole="Materialy" ToRole="Vydacha_mater2" />
+          <NavigationProperty Name="Rashod_2" Relationship="CRM_magModel.FK_Rashod_2_Materialy" FromRole="Materialy" ToRole="Rashod_2" />
+        </EntityType>
+        <Association Name="FK_Materialy_Ed_izm">
+          <End Type="CRM_magModel.Ed_izm" Role="Ed_izm" Multiplicity="1" />
+          <End Type="CRM_magModel.Materialy" Role="Materialy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ed_izm">
+              <PropertyRef Name="id_ed_izm" />
+            </Principal>
+            <Dependent Role="Materialy">
+              <PropertyRef Name="id_ed_izm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prihod2_Materialy">
+          <End Type="CRM_magModel.Materialy" Role="Materialy" Multiplicity="1" />
+          <End Type="CRM_magModel.Prihod2" Role="Prihod2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Prihod2">
+              <PropertyRef Name="id_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vozvrat_mater2_Materialy">
+          <End Type="CRM_magModel.Materialy" Role="Materialy" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vozvrat_mater2" Role="Vozvrat_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Vozvrat_mater2">
+              <PropertyRef Name="id_mater" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vydacha_mater2_Materialy">
+          <End Type="CRM_magModel.Materialy" Role="Materialy" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Vydacha_mater2" Role="Vydacha_mater2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Vydacha_mater2">
+              <PropertyRef Name="id_mater" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spInventVed_Result">
+          <Property Type="Int32" Name="id_material" Nullable="false" />
+          <Property Type="String" Name="artikul" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="NameMaterial" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="id_ed_izm" Nullable="false" />
+          <Property Type="DateTime" Name="date_ostatok_cur" Nullable="true" />
+          <Property Type="Decimal" Name="prih" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="rash" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="ostatok_cur" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ostatok_new" Nullable="true" Precision="20" Scale="2" />
+        </ComplexType>
+        <EntityType Name="tmp_OborotkaSklad">
+          <Key>
+            <PropertyRef Name="Номенклатура" />
+          </Key>
+          <Property Name="Номенклатура" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ЕдИзм" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MaxZenasNDS" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ОстатокВх" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Приход" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Выдача" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ОстатокИсх" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ОстатокИсхРубсНДС" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Artikul" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Params">
+          <Key>
+            <PropertyRef Name="id_param" />
+          </Key>
+          <Property Name="id_param" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="param_int" Type="Int32" />
+          <Property Name="p_date_ost" Type="DateTime" Precision="7" />
+          <Property Name="p_date_from" Type="DateTime" Precision="7" />
+          <Property Name="p_date_to" Type="DateTime" Precision="7" />
+          <Property Name="param_string" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Request_reception">
+          <Key>
+            <PropertyRef Name="id_request" />
+          </Key>
+          <Property Name="id_request" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_request" Type="DateTime" Precision="0" />
+          <Property Name="id_adr_installation" Type="Int32" />
+          <Property Name="id_request_execution" Type="Int32" />
+          <Property Name="id_request_buhg" Type="Int32" />
+          <Property Name="id_request_snab" Type="Int32" />
+          <Property Name="otkaz" Type="Boolean" />
+          <Property Name="dispetcher" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="id_status" Type="Int32" />
+          <Property Name="id_kind_of_work" Type="Int32" />
+          <Property Name="id_perenos_request" Type="Int32" />
+          <Property Name="date_otkaza" Type="DateTime" Precision="7" />
+          <Property Name="reason_otkaza" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adr_installation" Relationship="CRM_magModel.FK_Request_reception_Adr_installation" FromRole="Request_reception" ToRole="Adr_installation" />
+          <NavigationProperty Name="BSO" Relationship="CRM_magModel.FK_BSO_Request_reception" FromRole="Request_reception" ToRole="BSO" />
+          <NavigationProperty Name="Kind_of_work" Relationship="CRM_magModel.FK_Request_reception_Kind_of_work" FromRole="Request_reception" ToRole="Kind_of_work" />
+          <NavigationProperty Name="Perenos_request" Relationship="CRM_magModel.FK_Request_reception_Perenos_request" FromRole="Request_reception" ToRole="Perenos_request" />
+          <NavigationProperty Name="Request_buhg" Relationship="CRM_magModel.FK_Request_reception_Request_buhg" FromRole="Request_reception" ToRole="Request_buhg" />
+          <NavigationProperty Name="Request_snab" Relationship="CRM_magModel.FK_Request_reception_Request_snab" FromRole="Request_reception" ToRole="Request_snab" />
+          <NavigationProperty Name="Status" Relationship="CRM_magModel.FK_Request_reception_Status" FromRole="Request_reception" ToRole="Status" />
+          <NavigationProperty Name="Request_attachment" Relationship="CRM_magModel.FK_Request_reception_Request_attachment" FromRole="Request_reception" ToRole="Request_attachment" />
+        </EntityType>
+        <Association Name="FK_Request_reception_Adr_installation">
+          <End Type="CRM_magModel.Adr_installation" Role="Adr_installation" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adr_installation">
+              <PropertyRef Name="id_adr_installation" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_adr_installation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSO_Request_reception">
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="0..1" />
+          <End Type="CRM_magModel.BSO" Role="BSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_reception">
+              <PropertyRef Name="id_request" />
+            </Principal>
+            <Dependent Role="BSO">
+              <PropertyRef Name="id_request_reception" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Kind_of_work">
+          <End Type="CRM_magModel.Kind_of_work" Role="Kind_of_work" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kind_of_work">
+              <PropertyRef Name="id_kind_of_work" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_kind_of_work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Perenos_request">
+          <End Type="CRM_magModel.Perenos_request" Role="Perenos_request" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perenos_request">
+              <PropertyRef Name="id_perenos_request" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_perenos_request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Request_buhg">
+          <End Type="CRM_magModel.Request_buhg" Role="Request_buhg" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_buhg">
+              <PropertyRef Name="id_request_buhg" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_request_buhg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Request_snab">
+          <End Type="CRM_magModel.Request_snab" Role="Request_snab" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_snab">
+              <PropertyRef Name="id_request_snab" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_request_snab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Status">
+          <End Type="CRM_magModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spOtkazy_Result">
+          <Property Type="String" Name="FIO_zakazchika" Nullable="true" MaxLength="62" />
+          <Property Type="Int32" Name="id_request" Nullable="false" />
+          <Property Type="DateTime" Name="date_request" Nullable="true" />
+          <Property Type="DateTime" Name="date_otkaza" Nullable="true" />
+          <Property Type="String" Name="reason_otkaza" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="spProizvodOtdel1_Result">
+          <Property Type="String" Name="FIO_zakazchika" Nullable="true" MaxLength="62" />
+          <Property Type="String" Name="Adres" Nullable="true" MaxLength="108" />
+          <Property Type="Int32" Name="id_request" Nullable="false" />
+          <Property Type="DateTime" Name="datetime_vyezda_montazhnika" Nullable="true" />
+          <Property Type="Int32" Name="id_mont" Nullable="false" />
+          <Property Type="String" Name="full_name" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="Request_attachment">
+          <Key>
+            <PropertyRef Name="id_request_execution" />
+          </Key>
+          <Property Name="id_request_execution" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datetime_vyezda_montazhnika" Type="DateTime" Precision="7" />
+          <Property Name="time_of_work" Type="Int32" />
+          <Property Name="id_mont" Type="Int32" />
+          <Property Name="date_execution" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Montazhniki" Relationship="CRM_magModel.FK_Request_attachment_Montazhniki" FromRole="Request_attachment" ToRole="Montazhniki" />
+          <NavigationProperty Name="Request_reception" Relationship="CRM_magModel.FK_Request_reception_Request_attachment" FromRole="Request_attachment" ToRole="Request_reception" />
+        </EntityType>
+        <Association Name="FK_Request_attachment_Montazhniki">
+          <End Type="CRM_magModel.Montazhniki" Role="Montazhniki" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_attachment" Role="Request_attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montazhniki">
+              <PropertyRef Name="id_mont" />
+            </Principal>
+            <Dependent Role="Request_attachment">
+              <PropertyRef Name="id_mont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_reception_Request_attachment">
+          <End Type="CRM_magModel.Request_attachment" Role="Request_attachment" Multiplicity="0..1" />
+          <End Type="CRM_magModel.Request_reception" Role="Request_reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_attachment">
+              <PropertyRef Name="id_request_execution" />
+            </Principal>
+            <Dependent Role="Request_reception">
+              <PropertyRef Name="id_request_execution" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ClientView_Result">
+          <Property Type="Int32" Name="id_client" Nullable="false" />
+          <Property Type="String" Name="famil" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="f_name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="s_name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="17" />
+          <Property Type="String" Name="number_pasp" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="id_adr_installation" Nullable="true" />
+          <Property Type="String" Name="city_town" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="raion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="street" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="house" Nullable="true" />
+          <Property Type="String" Name="korp" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="flat" Nullable="true" />
+          <Property Type="Int32" Name="id_metro" Nullable="true" />
+          <Property Type="Int32" Name="podezd" Nullable="true" />
+          <Property Type="Int32" Name="etag" Nullable="true" />
+          <Property Type="String" Name="domofon" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="id_request" Nullable="true" />
+          <Property Type="DateTime" Name="date_request" Nullable="true" />
+          <Property Type="Int32" Name="id_request_execution" Nullable="true" />
+          <Property Type="Int32" Name="id_request_buhg" Nullable="true" />
+          <Property Type="Int32" Name="id_request_snab" Nullable="true" />
+          <Property Type="Boolean" Name="otkaz" Nullable="true" />
+          <Property Type="DateTime" Name="date_otkaza" Nullable="true" />
+          <Property Type="String" Name="reason_otkaza" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="dispetcher" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="id_status" Nullable="true" />
+          <Property Type="Int32" Name="id_kind_of_work" Nullable="true" />
+          <Property Type="Int32" Name="id_perenos_request" Nullable="true" />
+          <Property Type="String" Name="name_metro" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="status" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="kind_of_work" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_zaplanirovan_vyezd" Nullable="true" />
+          <Property Type="String" Name="vremya" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ispolnitel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="reason_perenosa" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="vyezd_or_perezvon" Nullable="true" />
+          <Property Type="DateTime" Name="datetime_reception" Nullable="true" />
+          <Property Type="DateTime" Name="datetime_vyezda_montazhnika" Nullable="true" />
+          <Property Type="DateTime" Name="date_execution" Nullable="true" />
+          <Property Type="Int32" Name="time_of_work" Nullable="true" />
+          <Property Type="Int32" Name="id_mont" Nullable="true" />
+          <Property Type="Decimal" Name="sum_contract" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="nal_money" Nullable="true" />
+          <Property Type="Decimal" Name="sum_contract_TO" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="nal_oplata_TO" Nullable="true" />
+          <Property Type="Int32" Name="id_hol_schetch" Nullable="true" />
+          <Property Type="Int32" Name="id_gor_schetch" Nullable="true" />
+          <Property Type="Int32" Name="id_teplo_schetch" Nullable="true" />
+          <Property Type="Int32" Name="kol_teplo" Nullable="true" />
+          <Property Type="Int32" Name="kol_hol" Nullable="true" />
+          <Property Type="Int32" Name="kol_gor" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Rashod_2">
+          <Key>
+            <PropertyRef Name="id_rashod_2" />
+          </Key>
+          <Property Name="id_rashod_2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_material" Type="Int32" Nullable="false" />
+          <Property Name="kod_ed_izm" Type="Int32" Nullable="false" />
+          <Property Name="kol" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="cena" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Materialy" Relationship="CRM_magModel.FK_Rashod_2_Materialy" FromRole="Rashod_2" ToRole="Materialy" />
+          <NavigationProperty Name="Rashod1" Relationship="CRM_magModel.FK_Rashod_2_Rashod1" FromRole="Rashod_2" ToRole="Rashod1" />
+        </EntityType>
+        <Association Name="FK_Rashod_2_Materialy">
+          <End Type="CRM_magModel.Materialy" Role="Materialy" Multiplicity="1" />
+          <End Type="CRM_magModel.Rashod_2" Role="Rashod_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materialy">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="Rashod_2">
+              <PropertyRef Name="id_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rashod_2_Rashod1">
+          <End Type="CRM_magModel.Rashod1" Role="Rashod1" Multiplicity="1" />
+          <End Type="CRM_magModel.Rashod_2" Role="Rashod_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rashod1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rashod_2">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spOstatok_Result">
+          <Property Type="Int32" Name="id_material" Nullable="false" />
+          <Property Type="String" Name="NameMaterial" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="NameEI" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Ostatok" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SredSytRash" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="OstatokDni" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="7" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CRM_magModelStoreContainer" CdmEntityContainer="CRM_magEntities">
+          <EntitySetMapping Name="BSO">
+            <EntityTypeMapping TypeName="CRM_magModel.BSO">
+              <MappingFragment StoreEntitySet="BSO">
+                <ScalarProperty Name="zaplanirovan_date_TO" ColumnName="zaplanirovan_date_TO" />
+                <ScalarProperty Name="ispolnitel_proveden_TO" ColumnName="ispolnitel_proveden_TO" />
+                <ScalarProperty Name="sum_beznal_po_BSO" ColumnName="sum_beznal_po_BSO" />
+                <ScalarProperty Name="sum_beznal_TO" ColumnName="sum_beznal_TO" />
+                <ScalarProperty Name="sum_beznal_zamena" ColumnName="sum_beznal_zamena" />
+                <ScalarProperty Name="sum_beznal_installation" ColumnName="sum_beznal_installation" />
+                <ScalarProperty Name="sum_nal_po_BSO" ColumnName="sum_nal_po_BSO" />
+                <ScalarProperty Name="avans" ColumnName="avans" />
+                <ScalarProperty Name="sum_nal_dopolniteln_materialy" ColumnName="sum_nal_dopolniteln_materialy" />
+                <ScalarProperty Name="sum_nal_dopolniteln_work" ColumnName="sum_nal_dopolniteln_work" />
+                <ScalarProperty Name="sum_nal_shefmontazh" ColumnName="sum_nal_shefmontazh" />
+                <ScalarProperty Name="sum_nal_TO" ColumnName="sum_nal_TO" />
+                <ScalarProperty Name="sum_nal_zamena" ColumnName="sum_nal_zamena" />
+                <ScalarProperty Name="sum_nal_installation" ColumnName="sum_nal_installation" />
+                <ScalarProperty Name="kol_zamena_gor_schetch" ColumnName="kol_zamena_gor_schetch" />
+                <ScalarProperty Name="kol_zamena_hol_schetch" ColumnName="kol_zamena_hol_schetch" />
+                <ScalarProperty Name="kol_ust_hol_schetch" ColumnName="kol_ust_hol_schetch" />
+                <ScalarProperty Name="kol_ust_gor_schetch" ColumnName="kol_ust_gor_schetch" />
+                <ScalarProperty Name="date_execution" ColumnName="date_execution" />
+                <ScalarProperty Name="ispolnitel" ColumnName="ispolnitel" />
+                <ScalarProperty Name="id_request_reception" ColumnName="id_request_reception" />
+                <ScalarProperty Name="date_BSO" ColumnName="date_BSO" />
+                <ScalarProperty Name="number_BSO" ColumnName="number_BSO" />
+                <ScalarProperty Name="id_BSO" ColumnName="id_BSO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ed_izm">
+            <EntityTypeMapping TypeName="CRM_magModel.Ed_izm">
+              <MappingFragment StoreEntitySet="Ed_izm">
+                <ScalarProperty Name="nameEI" ColumnName="nameEI" />
+                <ScalarProperty Name="id_ed_izm" ColumnName="id_ed_izm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavshiki">
+            <EntityTypeMapping TypeName="CRM_magModel.Postavshiki">
+              <MappingFragment StoreEntitySet="Postavshiki">
+                <ScalarProperty Name="tel_manager" ColumnName="tel_manager" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="name_postavsh" ColumnName="name_postavsh" />
+                <ScalarProperty Name="id_postavsh" ColumnName="id_postavsh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request_buhg">
+            <EntityTypeMapping TypeName="CRM_magModel.Request_buhg">
+              <MappingFragment StoreEntitySet="Request_buhg">
+                <ScalarProperty Name="nal_oplata_TO" ColumnName="nal_oplata_TO" />
+                <ScalarProperty Name="sum_contract_TO" ColumnName="sum_contract_TO" />
+                <ScalarProperty Name="nal_money" ColumnName="nal_money" />
+                <ScalarProperty Name="sum_contract" ColumnName="sum_contract" />
+                <ScalarProperty Name="id_request_buhg" ColumnName="id_request_buhg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudniki">
+            <EntityTypeMapping TypeName="CRM_magModel.Sotrudniki">
+              <MappingFragment StoreEntitySet="Sotrudniki">
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="parol" ColumnName="parol" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="id_sotrudnik" ColumnName="id_sotrudnik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CRM_magModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vozvrat_mater1">
+            <EntityTypeMapping TypeName="CRM_magModel.Vozvrat_mater1">
+              <MappingFragment StoreEntitySet="Vozvrat_mater1">
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+                <ScalarProperty Name="data_vydacha" ColumnName="data_vydacha" />
+                <ScalarProperty Name="id_vozvr_m1" ColumnName="id_vozvr_m1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vozvrat_mater2">
+            <EntityTypeMapping TypeName="CRM_magModel.Vozvrat_mater2">
+              <MappingFragment StoreEntitySet="Vozvrat_mater2">
+                <ScalarProperty Name="kol" ColumnName="kol" />
+                <ScalarProperty Name="id_mater" ColumnName="id_mater" />
+                <ScalarProperty Name="id_vozvr_m1" ColumnName="id_vozvr_m1" />
+                <ScalarProperty Name="id_vozvr_m2" ColumnName="id_vozvr_m2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vydacha_mater1">
+            <EntityTypeMapping TypeName="CRM_magModel.Vydacha_mater1">
+              <MappingFragment StoreEntitySet="Vydacha_mater1">
+                <ScalarProperty Name="vydano" ColumnName="vydano" />
+                <ScalarProperty Name="id_request_snab" ColumnName="id_request_snab" />
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+                <ScalarProperty Name="data_vydacha" ColumnName="data_vydacha" />
+                <ScalarProperty Name="id_vydacha_m1" ColumnName="id_vydacha_m1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vydacha_mater2">
+            <EntityTypeMapping TypeName="CRM_magModel.Vydacha_mater2">
+              <MappingFragment StoreEntitySet="Vydacha_mater2">
+                <ScalarProperty Name="kol" ColumnName="kol" />
+                <ScalarProperty Name="id_mater" ColumnName="id_mater" />
+                <ScalarProperty Name="id_vydacha_m1" ColumnName="id_vydacha_m1" />
+                <ScalarProperty Name="id_vydacha_m2" ColumnName="id_vydacha_m2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kind_of_work">
+            <EntityTypeMapping TypeName="CRM_magModel.Kind_of_work">
+              <MappingFragment StoreEntitySet="Kind_of_work">
+                <ScalarProperty Name="kind_of_work1" ColumnName="kind_of_work" />
+                <ScalarProperty Name="id_kind_of_work" ColumnName="id_kind_of_work" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="CRM_magModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="status1" ColumnName="status" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="G_Schetchik">
+            <EntityTypeMapping TypeName="CRM_magModel.G_Schetchik">
+              <MappingFragment StoreEntitySet="G_Schetchik">
+                <ScalarProperty Name="marka_gor_schetch" ColumnName="marka_gor_schetch" />
+                <ScalarProperty Name="id_gor_schetch" ColumnName="id_gor_schetch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="H_Schetchik">
+            <EntityTypeMapping TypeName="CRM_magModel.H_Schetchik">
+              <MappingFragment StoreEntitySet="H_Schetchik">
+                <ScalarProperty Name="marka_hol_schetch" ColumnName="marka_hol_schetch" />
+                <ScalarProperty Name="id_hol_schetch" ColumnName="id_hol_schetch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teplo_Schetchik">
+            <EntityTypeMapping TypeName="CRM_magModel.Teplo_Schetchik">
+              <MappingFragment StoreEntitySet="Teplo_Schetchik">
+                <ScalarProperty Name="marka_teplo_schetch" ColumnName="marka_teplo_schetch" />
+                <ScalarProperty Name="id_teplo_schetch" ColumnName="id_teplo_schetch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request_snab">
+            <EntityTypeMapping TypeName="CRM_magModel.Request_snab">
+              <MappingFragment StoreEntitySet="Request_snab">
+                <ScalarProperty Name="kol_gor" ColumnName="kol_gor" />
+                <ScalarProperty Name="kol_hol" ColumnName="kol_hol" />
+                <ScalarProperty Name="kol_teplo" ColumnName="kol_teplo" />
+                <ScalarProperty Name="id_teplo_schetch" ColumnName="id_teplo_schetch" />
+                <ScalarProperty Name="id_gor_schetch" ColumnName="id_gor_schetch" />
+                <ScalarProperty Name="id_hol_schetch" ColumnName="id_hol_schetch" />
+                <ScalarProperty Name="id_request_snab" ColumnName="id_request_snab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Montazhniki">
+            <EntityTypeMapping TypeName="CRM_magModel.Montazhniki">
+              <MappingFragment StoreEntitySet="Montazhniki">
+                <ScalarProperty Name="data_uvol" ColumnName="data_uvol" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perenos_request">
+            <EntityTypeMapping TypeName="CRM_magModel.Perenos_request">
+              <MappingFragment StoreEntitySet="Perenos_request">
+                <ScalarProperty Name="datetime_reception" ColumnName="datetime_reception" />
+                <ScalarProperty Name="dispetcher" ColumnName="dispetcher" />
+                <ScalarProperty Name="vyezd_or_perezvon" ColumnName="vyezd_or_perezvon" />
+                <ScalarProperty Name="reason_perenosa" ColumnName="reason_perenosa" />
+                <ScalarProperty Name="ispolnitel" ColumnName="ispolnitel" />
+                <ScalarProperty Name="vremya" ColumnName="vremya" />
+                <ScalarProperty Name="date_zaplanirovan_vyezd" ColumnName="date_zaplanirovan_vyezd" />
+                <ScalarProperty Name="id_perenos_request" ColumnName="id_perenos_request" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="CRM_magModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="number_pasp" ColumnName="number_pasp" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="famil" ColumnName="famil" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adr_installation">
+            <EntityTypeMapping TypeName="CRM_magModel.Adr_installation">
+              <MappingFragment StoreEntitySet="Adr_installation">
+                <ScalarProperty Name="domofon" ColumnName="domofon" />
+                <ScalarProperty Name="etag" ColumnName="etag" />
+                <ScalarProperty Name="podezd" ColumnName="podezd" />
+                <ScalarProperty Name="id_metro" ColumnName="id_metro" />
+                <ScalarProperty Name="flat" ColumnName="flat" />
+                <ScalarProperty Name="korp" ColumnName="korp" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="raion" ColumnName="raion" />
+                <ScalarProperty Name="city_town" ColumnName="city_town" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="id_adr_installation" ColumnName="id_adr_installation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metro">
+            <EntityTypeMapping TypeName="CRM_magModel.Metro">
+              <MappingFragment StoreEntitySet="Metro">
+                <ScalarProperty Name="name_metro" ColumnName="name_metro" />
+                <ScalarProperty Name="id_metro" ColumnName="id_metro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tEdIzm">
+            <EntityTypeMapping TypeName="CRM_magModel.tEdIzm">
+              <MappingFragment StoreEntitySet="tEdIzm">
+                <ScalarProperty Name="NameEI" ColumnName="NameEI" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FullRequest">
+            <EntityTypeMapping TypeName="CRM_magModel.FullRequest">
+              <MappingFragment StoreEntitySet="FullRequest">
+                <ScalarProperty Name="datetime_vyezda_montazhnika" ColumnName="datetime_vyezda_montazhnika" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="name_metro" ColumnName="name_metro" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="kol_gor" ColumnName="kol_gor" />
+                <ScalarProperty Name="kol_hol" ColumnName="kol_hol" />
+                <ScalarProperty Name="kol_teplo" ColumnName="kol_teplo" />
+                <ScalarProperty Name="id_teplo_schetch" ColumnName="id_teplo_schetch" />
+                <ScalarProperty Name="id_gor_schetch" ColumnName="id_gor_schetch" />
+                <ScalarProperty Name="id_hol_schetch" ColumnName="id_hol_schetch" />
+                <ScalarProperty Name="marka_hol_schetch" ColumnName="marka_hol_schetch" />
+                <ScalarProperty Name="marka_gor_schetch" ColumnName="marka_gor_schetch" />
+                <ScalarProperty Name="marka_teplo_schetch" ColumnName="marka_teplo_schetch" />
+                <ScalarProperty Name="nal_oplata_TO" ColumnName="nal_oplata_TO" />
+                <ScalarProperty Name="sum_contract_TO" ColumnName="sum_contract_TO" />
+                <ScalarProperty Name="nal_money" ColumnName="nal_money" />
+                <ScalarProperty Name="sum_contract" ColumnName="sum_contract" />
+                <ScalarProperty Name="dispetcher" ColumnName="dispetcher" />
+                <ScalarProperty Name="id_kind_of_work" ColumnName="id_kind_of_work" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="otkaz" ColumnName="otkaz" />
+                <ScalarProperty Name="id_request_snab" ColumnName="id_request_snab" />
+                <ScalarProperty Name="id_request_buhg" ColumnName="id_request_buhg" />
+                <ScalarProperty Name="id_request_execution" ColumnName="id_request_execution" />
+                <ScalarProperty Name="id_request" ColumnName="id_request" />
+                <ScalarProperty Name="id_adr_installation" ColumnName="id_adr_installation" />
+                <ScalarProperty Name="date_request" ColumnName="date_request" />
+                <ScalarProperty Name="datetime_reception" ColumnName="datetime_reception" />
+                <ScalarProperty Name="vyezd_or_perezvon" ColumnName="vyezd_or_perezvon" />
+                <ScalarProperty Name="reason_perenosa" ColumnName="reason_perenosa" />
+                <ScalarProperty Name="ispolnitel" ColumnName="ispolnitel" />
+                <ScalarProperty Name="vremya" ColumnName="vremya" />
+                <ScalarProperty Name="date_zaplanirovan_vyezd" ColumnName="date_zaplanirovan_vyezd" />
+                <ScalarProperty Name="kind_of_work" ColumnName="kind_of_work" />
+                <ScalarProperty Name="time_of_work" ColumnName="time_of_work" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="number_pasp" ColumnName="number_pasp" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="famil" ColumnName="famil" />
+                <ScalarProperty Name="domofon" ColumnName="domofon" />
+                <ScalarProperty Name="etag" ColumnName="etag" />
+                <ScalarProperty Name="podezd" ColumnName="podezd" />
+                <ScalarProperty Name="id_metro" ColumnName="id_metro" />
+                <ScalarProperty Name="flat" ColumnName="flat" />
+                <ScalarProperty Name="korp" ColumnName="korp" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="raion" ColumnName="raion" />
+                <ScalarProperty Name="city_town" ColumnName="city_town" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestList">
+            <EntityTypeMapping TypeName="CRM_magModel.RequestList">
+              <MappingFragment StoreEntitySet="RequestList">
+                <ScalarProperty Name="id_request" ColumnName="id_request" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="famil" ColumnName="famil" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbo_Metro">
+            <EntityTypeMapping TypeName="CRM_magModel.dbo_Metro">
+              <MappingFragment StoreEntitySet="dbo_Metro">
+                <ScalarProperty Name="name_metro" ColumnName="name_metro" />
+                <ScalarProperty Name="id_metro" ColumnName="id_metro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vMaterialy">
+            <EntityTypeMapping TypeName="CRM_magModel.vMaterialy">
+              <MappingFragment StoreEntitySet="vMaterialy">
+                <ScalarProperty Name="artikul" ColumnName="artikul" />
+                <ScalarProperty Name="nameEI" ColumnName="nameEI" />
+                <ScalarProperty Name="norma_rashoda_na1schetchik" ColumnName="norma_rashoda_na1schetchik" />
+                <ScalarProperty Name="mesto_hraneniya" ColumnName="mesto_hraneniya" />
+                <ScalarProperty Name="kol_v_tare" ColumnName="kol_v_tare" />
+                <ScalarProperty Name="kol_v_upak" ColumnName="kol_v_upak" />
+                <ScalarProperty Name="ves1shtuki" ColumnName="ves1shtuki" />
+                <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prihod1">
+            <EntityTypeMapping TypeName="CRM_magModel.Prihod1">
+              <MappingFragment StoreEntitySet="Prihod1">
+                <ScalarProperty Name="id_postavsh" ColumnName="id_postavsh" />
+                <ScalarProperty Name="data_prihod" ColumnName="data_prihod" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prihod2">
+            <EntityTypeMapping TypeName="CRM_magModel.Prihod2">
+              <MappingFragment StoreEntitySet="Prihod2">
+                <ScalarProperty Name="cena" ColumnName="cena" />
+                <ScalarProperty Name="kol" ColumnName="kol" />
+                <ScalarProperty Name="kod_ed_izm" ColumnName="kod_ed_izm" />
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_prihod2" ColumnName="id_prihod2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rashod1">
+            <EntityTypeMapping TypeName="CRM_magModel.Rashod1">
+              <MappingFragment StoreEntitySet="Rashod1">
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+                <ScalarProperty Name="data_nakl" ColumnName="data_nakl" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materialy">
+            <EntityTypeMapping TypeName="CRM_magModel.Materialy">
+              <MappingFragment StoreEntitySet="Materialy">
+                <ScalarProperty Name="ostatok_cur" ColumnName="ostatok_cur" />
+                <ScalarProperty Name="date_ostatok_cur" ColumnName="date_ostatok_cur" />
+                <ScalarProperty Name="ostatok_prev" ColumnName="ostatok_prev" />
+                <ScalarProperty Name="date_ostatok_prev" ColumnName="date_ostatok_prev" />
+                <ScalarProperty Name="artikul" ColumnName="artikul" />
+                <ScalarProperty Name="norma_rashoda_na1schetchik" ColumnName="norma_rashoda_na1schetchik" />
+                <ScalarProperty Name="mesto_hraneniya" ColumnName="mesto_hraneniya" />
+                <ScalarProperty Name="kol_v_tare" ColumnName="kol_v_tare" />
+                <ScalarProperty Name="kol_v_upak" ColumnName="kol_v_upak" />
+                <ScalarProperty Name="ves1shtuki" ColumnName="ves1shtuki" />
+                <ScalarProperty Name="id_ed_izm" ColumnName="id_ed_izm" />
+                <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spInventVed" FunctionName="CRM_magModel.Store.spInventVed">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRM_magModel.spInventVed_Result">
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+                <ScalarProperty Name="artikul" ColumnName="artikul" />
+                <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+                <ScalarProperty Name="id_ed_izm" ColumnName="id_ed_izm" />
+                <ScalarProperty Name="date_ostatok_cur" ColumnName="date_ostatok_cur" />
+                <ScalarProperty Name="prih" ColumnName="prih" />
+                <ScalarProperty Name="rash" ColumnName="rash" />
+                <ScalarProperty Name="ostatok_cur" ColumnName="ostatok_cur" />
+                <ScalarProperty Name="ostatok_new" ColumnName="ostatok_new" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tmp_OborotkaSklad">
+            <EntityTypeMapping TypeName="CRM_magModel.tmp_OborotkaSklad">
+              <MappingFragment StoreEntitySet="tmp_OborotkaSklad">
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="ОстатокИсхРубсНДС" ColumnName="ОстатокИсхРубсНДС" />
+                <ScalarProperty Name="ОстатокИсх" ColumnName="ОстатокИсх" />
+                <ScalarProperty Name="Выдача" ColumnName="Выдача" />
+                <ScalarProperty Name="Приход" ColumnName="Приход" />
+                <ScalarProperty Name="ОстатокВх" ColumnName="ОстатокВх" />
+                <ScalarProperty Name="MaxZenasNDS" ColumnName="MaxZenasNDS" />
+                <ScalarProperty Name="ЕдИзм" ColumnName="ЕдИзм" />
+                <ScalarProperty Name="Номенклатура" ColumnName="Номенклатура" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spOborotkaSklad" FunctionName="CRM_magModel.Store.spOborotkaSklad" />
+          <FunctionImportMapping FunctionImportName="spOborMont" FunctionName="CRM_magModel.Store.spOborMont" />
+          <EntitySetMapping Name="Params">
+            <EntityTypeMapping TypeName="CRM_magModel.Params">
+              <MappingFragment StoreEntitySet="Params">
+                <ScalarProperty Name="param_string" ColumnName="param_string" />
+                <ScalarProperty Name="p_date_to" ColumnName="p_date_to" />
+                <ScalarProperty Name="p_date_from" ColumnName="p_date_from" />
+                <ScalarProperty Name="p_date_ost" ColumnName="p_date_ost" />
+                <ScalarProperty Name="param_int" ColumnName="param_int" />
+                <ScalarProperty Name="id_param" ColumnName="id_param" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request_reception">
+            <EntityTypeMapping TypeName="CRM_magModel.Request_reception">
+              <MappingFragment StoreEntitySet="Request_reception">
+                <ScalarProperty Name="reason_otkaza" ColumnName="reason_otkaza" />
+                <ScalarProperty Name="date_otkaza" ColumnName="date_otkaza" />
+                <ScalarProperty Name="id_perenos_request" ColumnName="id_perenos_request" />
+                <ScalarProperty Name="id_kind_of_work" ColumnName="id_kind_of_work" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="dispetcher" ColumnName="dispetcher" />
+                <ScalarProperty Name="otkaz" ColumnName="otkaz" />
+                <ScalarProperty Name="id_request_snab" ColumnName="id_request_snab" />
+                <ScalarProperty Name="id_request_buhg" ColumnName="id_request_buhg" />
+                <ScalarProperty Name="id_request_execution" ColumnName="id_request_execution" />
+                <ScalarProperty Name="id_adr_installation" ColumnName="id_adr_installation" />
+                <ScalarProperty Name="date_request" ColumnName="date_request" />
+                <ScalarProperty Name="id_request" ColumnName="id_request" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spOtkazy" FunctionName="CRM_magModel.Store.spOtkazy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRM_magModel.spOtkazy_Result">
+                <ScalarProperty Name="FIO_zakazchika" ColumnName="FIO zakazchika" />
+                <ScalarProperty Name="id_request" ColumnName="id_request" />
+                <ScalarProperty Name="date_request" ColumnName="date_request" />
+                <ScalarProperty Name="date_otkaza" ColumnName="date_otkaza" />
+                <ScalarProperty Name="reason_otkaza" ColumnName="reason_otkaza" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spProizvodOtdel1" FunctionName="CRM_magModel.Store.spProizvodOtdel1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRM_magModel.spProizvodOtdel1_Result">
+                <ScalarProperty Name="FIO_zakazchika" ColumnName="FIO zakazchika" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="id_request" ColumnName="id_request" />
+                <ScalarProperty Name="datetime_vyezda_montazhnika" ColumnName="datetime_vyezda_montazhnika" />
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Request_attachment">
+            <EntityTypeMapping TypeName="CRM_magModel.Request_attachment">
+              <MappingFragment StoreEntitySet="Request_attachment">
+                <ScalarProperty Name="date_execution" ColumnName="date_execution" />
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+                <ScalarProperty Name="time_of_work" ColumnName="time_of_work" />
+                <ScalarProperty Name="datetime_vyezda_montazhnika" ColumnName="datetime_vyezda_montazhnika" />
+                <ScalarProperty Name="id_request_execution" ColumnName="id_request_execution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ClientView" FunctionName="CRM_magModel.Store.ClientView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRM_magModel.ClientView_Result">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="famil" ColumnName="famil" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="number_pasp" ColumnName="number_pasp" />
+                <ScalarProperty Name="id_adr_installation" ColumnName="id_adr_installation" />
+                <ScalarProperty Name="city_town" ColumnName="city_town" />
+                <ScalarProperty Name="raion" ColumnName="raion" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="korp" ColumnName="korp" />
+                <ScalarProperty Name="flat" ColumnName="flat" />
+                <ScalarProperty Name="id_metro" ColumnName="id_metro" />
+                <ScalarProperty Name="podezd" ColumnName="podezd" />
+                <ScalarProperty Name="etag" ColumnName="etag" />
+                <ScalarProperty Name="domofon" ColumnName="domofon" />
+                <ScalarProperty Name="id_request" ColumnName="id_request" />
+                <ScalarProperty Name="date_request" ColumnName="date_request" />
+                <ScalarProperty Name="id_request_execution" ColumnName="id_request_execution" />
+                <ScalarProperty Name="id_request_buhg" ColumnName="id_request_buhg" />
+                <ScalarProperty Name="id_request_snab" ColumnName="id_request_snab" />
+                <ScalarProperty Name="otkaz" ColumnName="otkaz" />
+                <ScalarProperty Name="date_otkaza" ColumnName="date_otkaza" />
+                <ScalarProperty Name="reason_otkaza" ColumnName="reason_otkaza" />
+                <ScalarProperty Name="dispetcher" ColumnName="dispetcher" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="id_kind_of_work" ColumnName="id_kind_of_work" />
+                <ScalarProperty Name="id_perenos_request" ColumnName="id_perenos_request" />
+                <ScalarProperty Name="name_metro" ColumnName="name_metro" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="kind_of_work" ColumnName="kind_of_work" />
+                <ScalarProperty Name="date_zaplanirovan_vyezd" ColumnName="date_zaplanirovan_vyezd" />
+                <ScalarProperty Name="vremya" ColumnName="vremya" />
+                <ScalarProperty Name="ispolnitel" ColumnName="ispolnitel" />
+                <ScalarProperty Name="reason_perenosa" ColumnName="reason_perenosa" />
+                <ScalarProperty Name="vyezd_or_perezvon" ColumnName="vyezd_or_perezvon" />
+                <ScalarProperty Name="datetime_reception" ColumnName="datetime_reception" />
+                <ScalarProperty Name="datetime_vyezda_montazhnika" ColumnName="datetime_vyezda_montazhnika" />
+                <ScalarProperty Name="date_execution" ColumnName="date_execution" />
+                <ScalarProperty Name="time_of_work" ColumnName="time_of_work" />
+                <ScalarProperty Name="id_mont" ColumnName="id_mont" />
+                <ScalarProperty Name="sum_contract" ColumnName="sum_contract" />
+                <ScalarProperty Name="nal_money" ColumnName="nal_money" />
+                <ScalarProperty Name="sum_contract_TO" ColumnName="sum_contract_TO" />
+                <ScalarProperty Name="nal_oplata_TO" ColumnName="nal_oplata_TO" />
+                <ScalarProperty Name="id_hol_schetch" ColumnName="id_hol_schetch" />
+                <ScalarProperty Name="id_gor_schetch" ColumnName="id_gor_schetch" />
+                <ScalarProperty Name="id_teplo_schetch" ColumnName="id_teplo_schetch" />
+                <ScalarProperty Name="kol_teplo" ColumnName="kol_teplo" />
+                <ScalarProperty Name="kol_hol" ColumnName="kol_hol" />
+                <ScalarProperty Name="kol_gor" ColumnName="kol_gor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Rashod_2">
+            <EntityTypeMapping TypeName="CRM_magModel.Rashod_2">
+              <MappingFragment StoreEntitySet="Rashod_2">
+                <ScalarProperty Name="cena" ColumnName="cena" />
+                <ScalarProperty Name="kol" ColumnName="kol" />
+                <ScalarProperty Name="kod_ed_izm" ColumnName="kod_ed_izm" />
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_rashod_2" ColumnName="id_rashod_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spOstatok" FunctionName="CRM_magModel.Store.spOstatok">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRM_magModel.spOstatok_Result">
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+                <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+                <ScalarProperty Name="NameEI" ColumnName="NameEI" />
+                <ScalarProperty Name="Ostatok" ColumnName="Ostatok" />
+                <ScalarProperty Name="SredSytRash" ColumnName="SredSytRash" />
+                <ScalarProperty Name="OstatokDni" ColumnName="OstatokDni" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
